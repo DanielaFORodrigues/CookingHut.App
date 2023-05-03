@@ -1,0 +1,51 @@
+.form-margin {
+
+  padding: 0.5rem;
+  margin-bottom: 1%;
+
+
+}
+
+.container {
+  margin-left: 45%;
+  font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+#forgotPassword {
+
+text-align: right;
+font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+
+.linkRegisto {
+
+  font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+#loginForm {
+
+  max-width: 300px;
+  margin-left: 45%;
+
+}
+
+
+.errorLogin {
+
+  color: #b12c2c;
+  padding: 6rem;
+  text-decoration: none;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manterlogado
+{
+  font: 1.4rem'Fira Sans', sans-serif;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<div class="container">
+
+  <img src="../../../../assets/images/CookingHut_logo.png" alt="CookingHut Logo" width="300" height="200">
+
+  <h5>Faça Login Com o Seu Email e Password.</h5>
+
+</div>
+
+<div id="loginForm" class="row g-3">
+
+  <div class="form-group form-margin ">
+    <label class="form-label">Email</label>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-envelope" style="background:transparent;border:none"></i>
+      </span>
+      <input type="text" [(ngModel)]="userLogin.email" class="form-control" placeholder="exemplo@exemplo.com" />
+    </div>
+  </div>
+
+  <div class="form-group form-margin ">
+    <label class="form-label">Password</label>
+    <div class="input-group">
+
+      <span class="input-group-addon">
+        <i class="fa fa-lock" style="background:transparent;border:none"></i>
+      </span>
+      <input type="password" [(ngModel)]="userLogin.password" class="form-control" placeholder="********" />
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div id="forgotPassword">
+      <a href="https://www.freecodecamp.org/">Esqueceu a sua Password?</a>
+    </div>
+
+    <p>
+      <input type="checkbox" name="manterlogado" id="manterlogado" value="" />
+      <label class="manterlogado">Manter Sessão Iniciada</label>
+    </p>
+  </div>
+
+  <div class="form-group form-margin">
+    <button type="submit" style="width: 300px; height: 35px"(click)="login()">Iniciar Sessão</button>
+  </div>
+  <div>
+
+    <br>
+
+    <div>
+      <p class="linkRegisto">
+        Não tem conta?
+        <a href="registo">Registe-se Aqui</a>
+      </p>
+
+      <div class="errorLogin">
+        <p-toast></p-toast>
+      </div>
+

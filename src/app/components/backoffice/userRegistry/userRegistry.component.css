@@ -1,0 +1,48 @@
+.form-margin {
+
+  padding: 0.5rem;
+  margin-bottom: 1%;
+
+}
+
+.container {
+
+  margin-left: 45%;
+  font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+#politicaPrivacidade {
+
+text-align: left;
+font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+
+.linkLogin {
+
+  font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+
+#registoForm {
+
+  max-width: 300px;
+  margin-left: 45%;
+
+}
+
+
+.errorLogin {
+
+  color: #b12c2c;
+  padding: 6rem;
+  text-decoration: none;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
