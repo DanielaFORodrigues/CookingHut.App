@@ -1,14 +1,14 @@
 
-import { Recipe } from "./recipe";
 export interface User {
 
   id: number;
   name: string;
-  username: string;
+  surname: string;
+  country: string;
+  city: string;
   email: string;
   password: string;
-  birhDate: Date;
+  birthDate: Date;
   isAdministrator: boolean;
   isBlocked: boolean;
-  recipeId: number,
 }

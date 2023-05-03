@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { UserRegistry } from 'src/app/models/UserRegistry';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Constants } from 'src/app/utils/pipes/constant';
 
@@ -14,15 +14,17 @@ import { Constants } from 'src/app/utils/pipes/constant';
 })
 export class UserRegistryComponent implements OnInit {
 
-  userRegistry: UserRegistry = {
+  userRegistry: User = {
+    id: 0,
     name: '',
-    surname: "",
-    birhDate: Date,
+    surname: '',
+    birthDate: new Date(),
     country: '',
     city: "",
     email: '',
     password: '',
-
+    isAdministrator: false,
+    isBlocked: false,
   };
 
 

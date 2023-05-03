@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { Login } from '../models/login';
 import { User } from '../models/user';
-import { UserRegistry } from '../models/UserRegistry';
 ;
 
 @Injectable({
@@ -22,16 +21,16 @@ export class UserService {
     return this.httpClient.get<User>('https://localhost:44313/CookingHut/User/' + id);
   }
 
-  getLogin(userLogin: Login): Observable<Login> {
+  getLogin(userLogin: Login) {
     return this.httpClient.post<Login>('https://localhost:44313/CookingHut/User/Login', userLogin);
   }
 
-  register(userRegistry: UserRegistry): Observable<UserRegistry> {
-    return this.httpClient.post<UserRegistry>('https://localhost:44313/CookingHut/User/Create', userRegistry);
+  register(userRegistry: User): Observable<User> {
+    return this.httpClient.post<User>('https://localhost:44313/CookingHut/User', userRegistry);
   }
 
-  save(user: User): Observable<User> {
-    return this.httpClient.post<User>('https://localhost:44313/CookingHut/User', user);
+  update(user: User): Observable<User> {
+    return this.httpClient.put<User>('https://localhost:44313/CookingHut/User', user);
   }
 
   delete(id: number) {
