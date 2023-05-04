@@ -23,6 +23,7 @@ export class UserRegistryComponent implements OnInit {
     city: "",
     email: '',
     password: '',
+    confirmPassword:'',
     isAdministrator: false,
     isBlocked: false,
   };
@@ -43,7 +44,11 @@ register() {
       this.messageService.add({ severity: 'error', summary: 'Erro de registo', detail: 'Email Inválido ou já Existente' });
   });
 
+  
+}
+validatePassword() {
+
 }
 
-
 }
+

@@ -15,23 +15,21 @@
 #politicaPrivacidade {
 
 text-align: left;
-font: 0.8rem'Fira Sans', sans-serif;
+font: 1.2rem'Fira Sans', sans-serif;
 
 }
 
 
 .linkLogin {
 
-  font: 1rem'Fira Sans', sans-serif;
+  font: 1.2rem'Fira Sans', sans-serif;
 
 }
 
 
 #registoForm {
-
-  max-width: 370px;
+  max-width: 350px;
   margin-left: 45%;
-
 }
 
 
@@ -44,5 +42,13 @@ font: 0.8rem'Fira Sans', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.half-form
+{
+  float:left;
+  width:100%;
+  width:49.99999%;
+
 }
 

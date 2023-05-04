@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 
 <div class="container">
 
   <img src="../../../../assets/images/CookingHut_logo.png" alt="CookingHut Logo" width="300" height="200">
 
-  <h5>Bem-Vindo! Crie a Sua Conta CookingHut!</h5>
+  <h5>Bem-Vindo! Crie a Sua Conta CookingHut.</h5>
 
 </div>
-<br>
 
-<div  id="registoForm" class="w3-row-padding">
-  <div class="w3-half">
+
+<div  id="registoForm" class="row g-3">
+
+  <div class="form-group form-margin half-form ">
     <label class="form-label">Nome</label>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-user" style="background:transparent;border:none"></i>
       </span>
-      <input type="text" [(ngModel)]="userRegistry.name" class="form-control" />
+      <input type="text" [(ngModel)]="userRegistry.name" class="form-control"required />
     </div>
   </div>
 
-  <div class="w3-half">
-    <label>Apelido</label>
+  <div class="form-group form-margin half-form">
+    <label class="form-label">Apelido</label>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-user" style="background:transparent;border:none"></i>
       </span>
-      <input type="text" [(ngModel)]="userRegistry.surname" class="form-control" />
+      <input type="text" [(ngModel)]="userRegistry.surname" class="form-control"required />
     </div>
   </div>
 
@@ -40,7 +38,7 @@
       <span class="input-group-addon">
         <i class="fa fa-globe" style="background:transparent;border:none"></i>
       </span>
-      <input type="text" [(ngModel)]="userRegistry.country" class="form-control" />
+      <input type="text" [(ngModel)]="userRegistry.country" class="form-control"required />
     </div>
   </div>
 
@@ -53,13 +51,15 @@
       </span>
       <input type="text" [(ngModel)]="userRegistry.city" class="form-control"/>
     </div>
+
 <br>
+
   <div>
     <label for="diaa">Data de Nascimento</label><br>
-    <input type="date" id="birthDate" name="diaa"style="width: 340px; height: 40px" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+    <input type="date" [(ngModel)]="userRegistry.birthDate"  id="birthDate" name="diaa"style="width: 200px; height: 35px" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
     <span class="validity"></span>
   </div>
-  <!-- falta  [(ngModel)]="userRegistry.birhDate" -->
+</div>
 
   <div class="form-group form-margin ">
     <label class="form-label">Email</label>
@@ -71,7 +71,7 @@
     </div>
   </div>
 
-  <div class="form-group form-margin ">
+  <div class="form-group form-margin half-form">
     <label class="form-label">Password</label>
     <div class="input-group">
       <span class="input-group-addon">
@@ -81,13 +81,13 @@
     </div>
   </div>
 
-  <div class="form-group form-margin ">
-    <label class="form-label">Repetir Password</label>
+  <div class="form-group form-margin half-form ">
+    <label class="form-label">Confirmar Password</label>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-lock" style="background:transparent;border:none"></i>
       </span>
-      <input type="password" [(ngModel)]="userRegistry.password" class="form-control" placeholder="********" required/>
+      <input type="password" [(ngModel)]="userRegistry.confirmPassword" class="form-control" placeholder="********" required/>
     </div>
   </div>
 
@@ -100,7 +100,7 @@
  <br>
 
     <div class="form-group form-margin">
-      <button type="submit" style="width: 330px; height: 35px"(click)="register()">Criar Conta</button>
+      <button type="submit" style="width: 320px; height: 35px"(click)="register()">Criar Conta</button>
   </div>
 
   <br>
@@ -110,6 +110,7 @@
       Já possui uma conta?
       <a href="login">Faça o Seu Login Aqui</a>
     </p>
+
 
     <div class="errorRegisto">
       <p-toast></p-toast>

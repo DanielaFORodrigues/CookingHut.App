@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<nav id="menuPrincipal" class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
 
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">CookingHut</a>
     </div>
@@ -23,8 +23,8 @@
     <ul class="nav navbar-nav navbar-right">
 
       <li>
-       <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['registo']"><span
-         class="glyphicon glyphicon-user"></span> Registo</a>
+        <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['registo']"><span
+            class="glyphicon glyphicon-user"></span> Registo</a>
       </li>
 
       <li>
@@ -46,21 +46,18 @@
   </div>
 </nav>
 
-<div id="background">
-
- </div>
 
 
 
- <footer id="footer">
+<!-- <div>
+    <footer id="footer">
 
- <p>© CookingHut. Todos os Direitos Reservados </p>
+    <p>© CookingHut. Todos os Direitos Reservados </p>
 
- </footer>
+  </footer>
+</div> -->
 
 
 <div id="pageContent" class="content">
   <router-outlet></router-outlet>
 </div>
-
-
