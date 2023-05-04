@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <div class="container">
 
   <img src="../../../../assets/images/CookingHut_logo.png" alt="CookingHut Logo" width="300" height="200">
@@ -15,18 +16,17 @@
       <span class="input-group-addon">
         <i class="fa fa-envelope" style="background:transparent;border:none"></i>
       </span>
-      <input type="text" [(ngModel)]="userLogin.email" class="form-control" placeholder="exemplo@exemplo.com" />
+      <input type="text" [(ngModel)]="userLogin.email" class="form-control" placeholder="exemplo@exemplo.com" required />
     </div>
   </div>
 
   <div class="form-group form-margin ">
     <label class="form-label">Password</label>
     <div class="input-group">
-
       <span class="input-group-addon">
         <i class="fa fa-lock" style="background:transparent;border:none"></i>
       </span>
-      <input type="password" [(ngModel)]="userLogin.password" class="form-control" placeholder="********" />
+      <input type="password" [(ngModel)]="userLogin.password" class="form-control" placeholder="********" required />
     </div>
   </div>
 
@@ -37,7 +37,7 @@
     </div>
 
     <p>
-      <input type="checkbox" name="manterlogado" id="manterlogado" value="" />
+      <input type="checkbox" name="manterlogado" id="manterlogado" />
       <label class="manterlogado"> Manter Sessão Iniciada</label>
     </p>
   </div>

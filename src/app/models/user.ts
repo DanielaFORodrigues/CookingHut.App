@@ -8,6 +8,7 @@ export interface User {
   city: string;
   email: string;
   password: string;
+  confirmPassword: string;
   birthDate: Date;
   isAdministrator: boolean;
   isBlocked: boolean;

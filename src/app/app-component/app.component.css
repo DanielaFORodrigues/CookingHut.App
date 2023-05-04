@@ -1,12 +1,14 @@
 .form-margin {
   padding-bottom: 2.5rem;
   padding: 0.5rem;
+
 }
 
 .navbar-brand{
   color: rgb(41, 41, 41);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: x-large;
+
 }
 
 .active{
@@ -34,7 +36,7 @@ body {
 
 
 #footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: rgb(86, 160, 123);
   color: #FFF;
@@ -43,21 +45,13 @@ body {
   text-align: center;
   line-height: 100px;
 
+
 }
-
-
-/* #pageContent {
-  background-image: url("../../assets/images/backgroundPrincipal2.png");
-  background-attachment: scroll;
+ #pageContent {
+  background-image: url("../../assets/images/foodBackground.jpg");
+   /* opacity: 70%; */
+  background-attachment: fixed;
   background-size: cover;
   min-height: 100%;
 
-  } */
-
-
-/*
- #menuPrincipal{
-  background-image: linear-gradient(to bottom,#c75050 0,#222222 100%);
-
-}  */
-
+  }
