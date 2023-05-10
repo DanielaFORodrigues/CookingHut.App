@@ -30,13 +30,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log(this.messageService);
     this.userLogin= this.form.value;
     this.userService.getLogin(this.userLogin).subscribe( response => {
       Constants.userSession = response;
-      if(response != undefined)
+      if(response != undefined){
         this.router.navigate(['user']);
-      else
+      } else {
         this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail: 'Email ou Password Errados' });
+      }
     });
 
   }

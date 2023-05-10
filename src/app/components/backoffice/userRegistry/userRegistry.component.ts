@@ -1,10 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Constants } from 'src/app/utils/pipes/constant';
+
 
 @Component({
   selector: 'app-register',
@@ -14,34 +16,39 @@ import { Constants } from 'src/app/utils/pipes/constant';
 })
 export class UserRegistryComponent implements OnInit {
 
-  userRegistry: User = {
-    id: 0,
-    name: '',
-    surname: '',
-    birthDate: new Date(),
-    country: '',
-    city: "",
-    email: '',
-    password: '',
-    confirmPassword:'',
-    isAdministrator: false,
-    isBlocked: false,
-  };
+  userRegistry!: any;
 
+  form = new FormGroup({
+    name: new FormControl('',[Validators.required]),
+    surname: new FormControl('',[Validators.required]),
+    birthDate: new FormControl('',[Validators.required]),
+    country: new FormControl('',[Validators.required]),
+    city: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+    confirmPassword: new FormControl('',[Validators.required]),
+  });
 
-  constructor(private userService: UserService, private router: Router, private messageService: MessageService) { }
+  messageService:any;
+
+  constructor(private userService: UserService, private router: Router, private mmessageService: MessageService) { }
 
 
   ngOnInit() {
   }
 
 register() {
+  this.userRegistry=this.form.value;
   this.userService.register(this.userRegistry).subscribe( response => {
     Constants.userSession = response;
-    if(response != undefined)
+    if(response != undefined) {
+      alert("Utilizador Registado Com Sucesso!");
       this.router.navigate(['login']);
-    else
+    }
+    else {
       this.messageService.add({ severity: 'error', summary: 'Erro de registo', detail: 'Email Inválido ou Já Existente.' });
+    }
+
   });
 
 
