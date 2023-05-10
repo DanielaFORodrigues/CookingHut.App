@@ -4,7 +4,7 @@ import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
 import { Constants } from 'src/app/utils/pipes/constant';
 import { MessageService } from 'primeng/api';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,21 +14,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  userLogin: Login = {
+  userLogin!: any;
 
-    email: '',
-    password: ''
+  form = new FormGroup({
+    email: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+  });
 
-  };
   messageService:any;
 
-  constructor(private userService:UserService,private formBuilder: FormBuilder, private router: Router, messageService: MessageService) { }
+  constructor(private userService:UserService, private router: Router, messageService: MessageService) { }
 
   ngOnInit() {
 
   }
 
   login() {
+    this.userLogin= this.form.value;
     this.userService.getLogin(this.userLogin).subscribe( response => {
       Constants.userSession = response;
       if(response != undefined)
