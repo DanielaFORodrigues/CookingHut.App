@@ -41,10 +41,10 @@ register() {
     if(response != undefined)
       this.router.navigate(['login']);
     else
-      this.messageService.add({ severity: 'error', summary: 'Erro de registo', detail: 'Email Inválido ou já Existente' });
+      this.messageService.add({ severity: 'error', summary: 'Erro de registo', detail: 'Email Inválido ou Já Existente.' });
   });
 
-  
+
 }
 validatePassword() {
 

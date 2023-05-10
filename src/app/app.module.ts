@@ -17,6 +17,7 @@ import { UserComponent } from "./components/backoffice/user/user.component";
 // Primeng Modules
 import { ToastModule } from 'primeng/toast';
 import { UserRegistryComponent } from "./components/backoffice/userRegistry/userRegistry.component";
+import { MessageService } from "primeng/api";
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { UserRegistryComponent } from "./components/backoffice/userRegistry/user
 
     AppRoutingModule // sempre em último
   ],
-  providers: [],
+  providers: [MessageService], // PrimeNg
   bootstrap: [AppComponent]
 })
 export class AppModule { }

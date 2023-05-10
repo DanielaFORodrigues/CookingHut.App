@@ -4,6 +4,7 @@ import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
 import { Constants } from 'src/app/utils/pipes/constant';
 import { MessageService } from 'primeng/api';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,9 @@ export class LoginComponent implements OnInit {
     password: ''
 
   };
+  messageService:any;
 
-  constructor(private userService: UserService, private router: Router, private messageService: MessageService) { }
+  constructor(private userService:UserService,private formBuilder: FormBuilder, private router: Router, messageService: MessageService) { }
 
   ngOnInit() {
 
