@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if(response != undefined){
         this.router.navigate(['user']);
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail: 'Email ou Password Errados' });
+        this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});
       }
     });
 
