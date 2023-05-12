@@ -10,17 +10,17 @@ export class UserContextService {
   constructor() { }
 
   clean() {
-    window.sessionStorage.clear();
+    window.localStorage.clear();
   }
 
   saveUserId(id: Number)
   {
-    window.sessionStorage.setItem(this.userIdStoreField, id.toString());
+    window.localStorage.setItem(this.userIdStoreField, id.toString());
   }
 
   getCurrentUserId()
   {
-    const userId = window.sessionStorage.getItem(this.userIdStoreField);
+    const userId = window.localStorage.getItem(this.userIdStoreField);
     return userId === null ? null : Number(userId);
   }
 

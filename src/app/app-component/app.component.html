@@ -25,14 +25,19 @@
 
     <ul class="nav navbar-nav navbar-right">
 
-      <li>
+      <li *ngIf="!isUserLogged()">
         <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['registo']"><span
             class="glyphicon glyphicon-user"></span> Registo</a>
       </li>
 
-      <li>
+      <li *ngIf="!isUserLogged()">
         <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['login']"><span
             class="glyphicon glyphicon-log-in"></span> Login</a>
+      </li>
+
+      <li *ngIf="isUserLogged()">
+        <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['user']"><span
+            class="glyphicon glyphicon-user"></span> Area de utilizador</a>
       </li>
     </ul>
 

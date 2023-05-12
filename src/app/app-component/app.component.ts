@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserContextService } from '../utils/contexts/usercontext.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CookingHutApp';
+
+  constructor(private userContext: UserContextService) { }
+
+  ngOnInit() {
+
+  }
+
+  isUserLogged() {
+    return this.userContext.isLogged();
+  }
 }
