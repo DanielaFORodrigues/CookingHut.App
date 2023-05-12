@@ -39,6 +39,10 @@
         <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['user']"><span
             class="glyphicon glyphicon-user"></span> Area de utilizador</a>
       </li>
+      <li *ngIf="isUserLogged()">
+        <a [routerLink]="" (click)="logout()"><span
+            class="glyphicon glyphicon-log-out"></span> Logout</a>
+      </li>
     </ul>
 
     <form class="navbar-form navbar-right" action="/action_page.php">

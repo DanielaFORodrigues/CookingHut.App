@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserContextService } from '../utils/contexts/usercontext.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { UserContextService } from '../utils/contexts/usercontext.service';
 export class AppComponent {
   title = 'CookingHutApp';
 
-  constructor(private userContext: UserContextService) { }
+  constructor(
+    private userContext: UserContextService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -17,5 +20,11 @@ export class AppComponent {
 
   isUserLogged() {
     return this.userContext.isLogged();
+  }
+
+  logout() {
+    this.userContext.clean();
+
+    this.router.navigate(['home']);
   }
 }
