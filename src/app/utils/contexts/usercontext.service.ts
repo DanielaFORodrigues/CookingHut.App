@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class UserContextService {
 
+  userIdStoreField: string = "userId";
+
   constructor() { }
 
   clean() {
@@ -13,12 +15,12 @@ export class UserContextService {
 
   saveUserId(id: Number)
   {
-    window.sessionStorage.setItem('userId', id.toString());
+    window.sessionStorage.setItem(this.userIdStoreField, id.toString());
   }
 
   getCurrentUserId()
   {
-    const userId = window.sessionStorage.getItem('userId');
+    const userId = window.sessionStorage.getItem(this.userIdStoreField);
     return userId === null ? null : Number(userId);
   }
 
