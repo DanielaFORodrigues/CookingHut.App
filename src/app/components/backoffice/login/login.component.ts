@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
-import { Constants } from 'src/app/utils/pipes/constant';
 import { MessageService } from 'primeng/api';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 
 @Component({
   selector: 'app-login',
@@ -23,18 +22,24 @@ export class LoginComponent implements OnInit {
 
   messageService:any;
 
-  constructor(private userService:UserService, private router: Router, messageService: MessageService) { }
+  constructor(
+    private userContext: UserContextService,
+    private userService:UserService,
+    private router: Router,
+    messageService: MessageService) { }
 
   ngOnInit() {
 
   }
 
   login() {
-    console.log(this.messageService);
+
     this.userLogin= this.form.value;
     this.userService.getLogin(this.userLogin).subscribe( response => {
-      Constants.userSession = response;
+
       if(response != undefined){
+        this.userContext.saveUserId(response.id);
+
         this.router.navigate(['user']);
       } else {
         this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});

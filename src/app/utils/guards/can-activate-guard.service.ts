@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { Constants } from '../pipes/constant';
+import { UserContextService } from '../contexts/usercontext.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CanActivateGuardService implements CanActivate {
 
-  constructor(){}
+  constructor(private userContext: UserContextService){}
 
   canActivate(): boolean {
 
-    if(Constants.userSession != undefined && Constants.userSession != null)
+    if(this.userContext.isLogged()){
       return true;
+    }
 
     return false;
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userContext: UserContextService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.userContext.clean();
+
+    this.router.navigate(['home']);
   }
 
 }

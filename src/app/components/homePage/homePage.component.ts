@@ -13,10 +13,5 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  backToHome() {
-
-    this.router.navigate(['home']);
-  }
 }
 
