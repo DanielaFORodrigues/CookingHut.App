@@ -9,3 +9,18 @@
   margin-left: 45%;
   font: 1.2rem'Fira Sans', sans-serif;
 }
+
+.container{
+  position: relative;
+  bottom: 20;
+  left: 30;
+  right: 35;
+  padding-bottom: 20px;
+
+  }
+  
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 50%;
+  margin: auto;
+}
