@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { MessageService } from 'primeng/api';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -20,16 +21,13 @@ export class LoginComponent implements OnInit {
     password: new FormControl('',[Validators.required]),
   });
 
-  messageService:any;
-
   constructor(
     private userContext: UserContextService,
     private userService:UserService,
     private router: Router,
-    messageService: MessageService) { }
+    private messageService: MessageService) { }
 
   ngOnInit() {
-
   }
 
   login() {
@@ -42,12 +40,17 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['user']);
       } else {
-        alert("Email ou Password Errados");
-        this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});
-        this.form.reset;
+        this.showFailedLoginMessage();
       }
+    },
+    (error: HttpErrorResponse) => {
+        this.showFailedLoginMessage();
     });
+  }
 
+  showFailedLoginMessage() {
+    this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});
+    this.form.reset;
   }
 
 }

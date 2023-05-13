@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,33 +30,35 @@ export class UserRegistryComponent implements OnInit {
     confirmPassword: new FormControl('',[Validators.required]),
   });
 
-  messageService:any;
-
-  constructor(private userService: UserService, private router: Router, private mmessageService: MessageService) { }
+  constructor(private userService: UserService, private router: Router, private messageService: MessageService) { }
 
 
   ngOnInit() {
   }
 
-register() {
-  this.userRegistry=this.form.value;
-  this.userService.register(this.userRegistry).subscribe( response => {
-    Constants.userSession = response;
-    if(response != undefined) {
-      alert("Utilizador Registado Com Sucesso!");
-      this.router.navigate(['login']);
-    }
-    else {
-      this.messageService.add({ severity: 'error', summary: 'Erro de registo', detail: 'Email Inválido ou Já Existente.' });
-    }
+  register() {
+    this.userRegistry=this.form.value;
+    this.userService.register(this.userRegistry).subscribe( response => {
+      Constants.userSession = response;
+      if(response != undefined) {
+        alert("Utilizador Registado Com Sucesso!");
+        this.router.navigate(['login']);
+      }
+      else {
+        this.showFailedRegisterMessage();
+      }
+    },
+    (error: HttpErrorResponse) => {
+        this.showFailedRegisterMessage();
+    });
+  }
 
-  });
+  showFailedRegisterMessage() {
+    this.messageService.add({ severity: 'error', summary: 'Erro de registo', detail: 'Email Inválido ou Já Existente.' });
+  }
 
-
-}
-validatePassword() {
-
-}
+  validatePassword() {
+  }
 
 }
 
