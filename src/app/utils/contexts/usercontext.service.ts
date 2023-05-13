@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Login } from 'src/app/models/login';
+import { Session } from 'src/app/models/session';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserContextService {
 
-  userIdStoreField: string = "userId";
+  userSessionStoreField: string = "userSession";
 
   constructor() { }
 
@@ -13,19 +15,30 @@ export class UserContextService {
     window.localStorage.clear();
   }
 
-  saveUserId(id: Number)
+  save(user: Login)
   {
-    window.localStorage.setItem(this.userIdStoreField, id.toString());
+    const session: Session = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    };
+
+    window.localStorage.setItem(this.userSessionStoreField, JSON.stringify(session));
   }
 
-  getCurrentUserId()
+  getCurrentSession() : Session | null
   {
-    const userId = window.localStorage.getItem(this.userIdStoreField);
-    return userId === null ? null : Number(userId);
+    const sessionJson = window.localStorage.getItem(this.userSessionStoreField);
+
+    if (sessionJson === null) {
+      return null;
+    }
+
+    return JSON.parse(sessionJson);
   }
 
   isLogged()
   {
-    return this.getCurrentUserId() !== null;
+    return this.getCurrentSession() !== null;
   }
 }

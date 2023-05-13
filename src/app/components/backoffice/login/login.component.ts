@@ -38,11 +38,13 @@ export class LoginComponent implements OnInit {
     this.userService.getLogin(this.userLogin).subscribe( response => {
 
       if(response != undefined){
-        this.userContext.saveUserId(response.id);
+        this.userContext.save(response);
 
         this.router.navigate(['user']);
       } else {
+        alert("Email ou Password Errados");
         this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});
+        this.form.reset;
       }
     });
 

@@ -27,4 +27,8 @@ export class AppComponent {
 
     this.router.navigate(['home']);
   }
+
+  getUserNameToDisplay() {
+    return this.userContext.getCurrentSession()?.name;
+  }
 }

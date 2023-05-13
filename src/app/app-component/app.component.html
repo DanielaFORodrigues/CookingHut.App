@@ -37,7 +37,7 @@
 
       <li *ngIf="isUserLogged()">
         <a [routerLinkActive]="['router-active', 'active']" [routerLink]="['user']"><span
-            class="glyphicon glyphicon-user"></span> Area de utilizador</a>
+            class="glyphicon glyphicon-user"></span>{{ getUserNameToDisplay() }}</a>
       </li>
       <li *ngIf="isUserLogged()">
         <a [routerLink]="" (click)="logout()"><span
