@@ -3,19 +3,28 @@
 
   <img src="../../../../assets/images/CookingHut_logo.png" alt="CookingHut Logo" width="300" height="200">
 
-  <h4>Painel de Utilizador</h4>
-
 </div>
 
 
-<ul>
-  <li><a [routerLink]="" (click)="logout()">Publicar Receita</a></li>
-  <br>
-  <li><a [routerLink]="" (click)="logout()">Receitas Favoritas</a></li>
-  <br>
-  <li><a [routerLink]="" (click)="logout()">Logout</a></li>
-</ul>
+ <div id="nav-user" class="container">
+    <h3 class="text-center">Painel de Utilizador</h3>
+    <ul class="nav nav-tabs">
+      <li><a [routerLink]="" (click)="logout()">Publicar Receita</a></li>
+      <li><a [routerLink]="" (click)="logout()">Receitas Favoritas</a></li>
+      <li><a [routerLink]="" (click)="logout()">Logout</a></li>
+    </ul>
 
 
-
-
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <h2>Publicar Nova Receita</h2>
+        <p> Formulario da nova Receita</p>
+      <div id="menu1" class="tab-pane fade">
+        <h2>Receitas Favoritas</h2>
+        <p>Lisa de Favoritas</p>
+      <div id="menu2" class="tab-pane fade">
+        <h2>Sair da Página de Utilizador</h2>
+        <p></p>
+      </div>
+    </div>
+</div>
