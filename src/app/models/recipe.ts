@@ -2,6 +2,7 @@ import { Time } from "@angular/common";
 
 export interface Recipe {
   id: number,
+  name: string;
   description: string,
   category: string,
   executionTime: Time,
@@ -10,5 +11,5 @@ export interface Recipe {
   creationDate: Date,
   categoryId:number,
 
-
 }
+

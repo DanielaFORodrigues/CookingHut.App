@@ -30,7 +30,9 @@ export class UserRegistryComponent implements OnInit {
     confirmPassword: new FormControl('',[Validators.required]),
   });
 
-  constructor(private userService: UserService, private router: Router, private messageService: MessageService) { }
+  constructor(private userService: UserService,
+     private router: Router,
+     private messageService: MessageService ) { }
 
 
   ngOnInit() {
