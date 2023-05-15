@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   showFailedLoginMessage() {
-    this.messageService.add({ severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});
+    this.messageService.add({ key: 'loginErrorToast', severity: 'error', summary: 'Erro de Login', detail:'Email ou Password Errados'});
     this.form.reset;
   }
 

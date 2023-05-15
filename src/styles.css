@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+.custom-toast .ui-toast {
+  display: block;
+  position: left;
+  width: 80%;
+}
+
+.custom-toast .ui-toast-message {
+  background: #ee925d;
+}

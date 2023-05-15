@@ -35,7 +35,7 @@ body {
 }
 
 
-#footer {
+/* #footer {
   position: fixed;
   bottom: 0;
   background-color: rgb(86, 160, 123);
@@ -44,9 +44,8 @@ body {
   height: 100px;
   text-align: center;
   line-height: 100px;
+} */
 
-
-}
 
  #pageContent {
   background-image: url("../../assets/images/foodBackground.jpg");

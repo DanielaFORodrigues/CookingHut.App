@@ -2,7 +2,7 @@
 
   padding: 0.5rem;
   margin-bottom: 1%;
-  
+
 }
 
 .logotipo {
@@ -31,19 +31,12 @@ font: 1.2rem'Fira Sans', sans-serif;
 
 }
 
-
-.errorLogin {
-
-  color: #b12c2c;
-  padding: 6rem;
-  text-decoration: none;
-  top: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .manterlogado
 {
   font: 1.4rem'Fira Sans', sans-serif;
+}
+
+:host ::ng-deep .custom-toast .ui-toast-message {
+    display: flex;
+    width: 400px;
 }

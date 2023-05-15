@@ -9,7 +9,9 @@ import { HomePageService } from 'src/app/services/homePage.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private homePageService: HomePageService, private router: Router) { }
+  constructor(
+    private homePageService: HomePageService,
+    private router: Router ) { }
 
   ngOnInit() {
   }
