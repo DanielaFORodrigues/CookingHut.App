@@ -3,3 +3,18 @@
   padding: 0.5rem;
 
 }
+
+.recipeForm{
+  max-width: 350px;
+ line-height: 60px;
+
+}
+
+
+textarea {
+  resize: none;
+  width: 700px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
