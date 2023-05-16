@@ -10,7 +10,7 @@ import { CategoryComponent } from "./components/backoffice/category/category.com
 import { IngredientComponent } from "./components/backoffice/ingredient/ingredient.component";
 import { LoginComponent } from "./components/backoffice/login/login.component";
 import { RatingComponent } from "./components/backoffice/rating/rating.component";
-import { RecipeComponent } from "./components/backoffice/recipe/recipe.component";
+import { CreateRecipeComponent } from "./components/backoffice/createRecipe/createRecipe.component";
 import { RecipeIngredientComponent } from "./components/backoffice/recipeIngredient/recipeIngredient.component";
 import { UserComponent } from "./components/backoffice/user/user.component";
 
@@ -27,7 +27,7 @@ import { MessageService } from "primeng/api";
     IngredientComponent,
     LoginComponent,
     RatingComponent,
-    RecipeComponent,
+    CreateRecipeComponent,
     RecipeIngredientComponent,
     UserRegistryComponent,
     UserComponent,
