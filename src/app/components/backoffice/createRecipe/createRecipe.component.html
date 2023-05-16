@@ -17,16 +17,16 @@
   <div class="input-group ">
     <select class="form-select" style="width: 350px; height: 35px">
       <option selected>Selecionar Categoria</option>
-      <option value="0">Entradas e Petiscos</option>
-      <option value="1">Sopas</option>
-      <option value="2">Carne</option>
-      <option value="3">Peixe e Marisco</option>
-      <option value="4">Acompanhamentos</option>
-      <option value="5">Doces e Sobremesas</option>
-      <option value="6">Vegetariana</option>
-      <option value="7">Dieta e Light</option>
-      <option value="8">Pão, Broas e Bolas</option>
-      <option value="9">Bebidas</option>
+      <option value="1">Entradas e Petiscos</option>
+      <option value="2">Sopas</option>
+      <option value="3">Carne</option>
+      <option value="4">Peixe e Marisco</option>
+      <option value="5">Acompanhamentos</option>
+      <option value="6">Doces e Sobremesas</option>
+      <option value="7">Vegetariana</option>
+      <option value="8">Dieta e Light</option>
+      <option value="9">Pão, Broas e Bolas</option>
+      <option value="10">Bebidas</option>
     </select>
   </div>
 </div>
@@ -42,8 +42,6 @@
 </div>
 </div>
 
-
-
 <div class="form-group form-margin ">
   <label class="form-label">Tempo de Execuçao</label>
   <div class="input-group">
@@ -54,7 +52,6 @@
   </div>
 </div>
 
-
 <div class="form-group form-margin ">
   <label class="form-label">Descrição</label>
   <div class="input-group">
@@ -63,18 +60,17 @@
     </span>
     <textarea formControlName="description" class="form-control"  rows="10" cols=""></textarea>
   </div>
-  <input type="hidden" name="MAX_FILE_SIZE" value="100" />
-  <input name="file" type="file" />
+  <br>
+
+  <div class="form-group form-margin ">
+    <label class="form-label">Imagem</label>
+    <div class="input-group">
+      <input type="hidden" name="MAX_FILE_SIZE" value="100" />
+      <input name="file" type="file" />
+    </div>
+  </div>
 </div>
 </form>
 <div>
-<br>
  <input type="submit" value="Publicar Receita!"style="width: 350px; height: 35px">
 </div>
-
-
-
-    <!-- <div class="form-group form-margin">
-      <button type="submit" [disabled]="!form.valid" style="width: 350px; height: 35px">Criar Conta</button>
-    </div>
--->
