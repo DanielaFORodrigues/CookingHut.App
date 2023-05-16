@@ -8,24 +8,20 @@
 <div id="nav-user" class="container">
   <h3 class="text-center">Painel de Utilizador</h3>
   <ul class="nav nav-tabs">
-    <li><a [routerLink]="" (click)="logout()">Publicar Receita</a></li>
-    <li><a [routerLink]="" (click)="logout()">Receitas Favoritas</a></li>
-    <li><a [routerLink]="" (click)="logout()">Logout</a></li>
+    <li [ngClass]="{'active': selectedTab == 1}"><a (click)="selectedTab=1">Publicar Receita</a></li>
+    <li [ngClass]="{'active': selectedTab == 2}"><a (click)="selectedTab=2">Receitas Favoritas</a></li>
+    <li><a (click)="logout()">Logout</a></li>
   </ul>
 
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
+    <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 1}" >
       <h2>Publicar Nova Receita</h2>
-      <p> Formulário Nova Receita</p>
-
-      <div id="menu1" class="tab-pane fade">
-        <h2>Receitas Favoritas</h2>
-        <p>Lisa de Favoritas</p>
-
-        <div id="menu2" class="tab-pane fade">
-          <h2>Sair da Página de Utilizador</h2>
-         
-        </div>
-      </div>
+      <app-createRecipe></app-createRecipe>
     </div>
+
+    <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}">
+      <h2>Receitas Favoritas</h2>
+      <p>Lisa de Favoritas</p>
+    </div>
+  </div>

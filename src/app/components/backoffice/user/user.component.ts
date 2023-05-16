@@ -9,6 +9,8 @@ import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 })
 export class UserComponent implements OnInit {
 
+  selectedTab = 1;
+
   constructor(
     private userContext: UserContextService,
     private router: Router

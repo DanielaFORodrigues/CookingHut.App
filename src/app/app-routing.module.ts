@@ -9,7 +9,6 @@ import { RecipeIngredientComponent } from './components/backoffice/recipeIngredi
 import { LoginComponent } from './components/backoffice/login/login.component';
 import { UserRegistryComponent } from './components/backoffice/userRegistry/userRegistry.component';
 import { HomePageComponent } from './components/homePage/homePage.component';
-import { CreateRecipeComponent } from './components/backoffice/createRecipe/createRecipe.component';
 
 
 const routes: Routes = [
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: 'category', canActivate: [CanActivateGuardService], component: CategoryComponent },
   { path: 'ingredient', canActivate: [CanActivateGuardService], component: IngredientComponent },
   { path: 'rating', canActivate: [CanActivateGuardService], component: RatingComponent },
-  { path: 'createRecipe', canActivate: [CanActivateGuardService], component: CreateRecipeComponent },
   { path: 'recipeIngredient', canActivate: [CanActivateGuardService], component: RecipeIngredientComponent },
   { path: 'Ingredient', canActivate: [CanActivateGuardService], component: IngredientComponent },
   { path: 'home', component: HomePageComponent },
