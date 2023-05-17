@@ -5,10 +5,9 @@ export interface Recipe {
   name: string;
   description: string,
   ingredients: string,
-  category: string,
-  executionTime: Time,
-  difficulty: string,
-  user: string,
+  executionTime: string,
+  difficulty: number,
+  userId: number,
   creationDate: Date,
   categoryId:number,
 

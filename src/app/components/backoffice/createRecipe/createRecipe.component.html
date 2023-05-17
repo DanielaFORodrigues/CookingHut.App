@@ -12,9 +12,9 @@
   <div class="form-group form-margin">
     <label class="form-label ">Categoria</label>
     <div class="input-group ">
-      <select class="form-select" style="width: 350px; height: 35px">
-        <option value="0" selected>Selecionar Categoria</option>
-        <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+      <select  formControlName="categoryId" class="form-select" style="width: 350px; height: 35px">
+        <option value="-1">Selecionar Categoria</option>
+        <option *ngFor="let category of categories" ngValue="{{ category.id }}">{{ category.name }}</option>
       </select>
     </div>
   </div>
@@ -22,8 +22,8 @@
   <div class="form-group form-margin">
     <label class="form-label ">Dificuldade</label>
     <div class="input-group ">
-      <select class="form-select" style="width: 350px; height: 35px" id="dificuldade">
-        <option selected>Selecionar Dificuldade</option>
+      <select class="form-select" style="width: 350px; height: 35px" formControlName="difficulty">
+        <option value="-1">Selecionar Dificuldade</option>
         <option value="0">Muito Fácil</option>
         <option value="1">Fácil</option>
         <option value="2">Médio</option>
@@ -39,7 +39,7 @@
       <span class="input-group-addon">
         <i style="background:transparent;border:none"></i>
       </span>
-      <input type="time" formControlName="name" class="form-control" required />
+      <input type="time" formControlName="executionTime" class="form-control" required />
     </div>
   </div>
 
@@ -49,7 +49,7 @@
       <span class="input-group-addon">
         <i style="background:transparent;border:none"></i>
       </span>
-      <input type="text" formControlName="ingredients" class="form-control" required />
+      <input type="text" class="form-control" required />
     </div>
   </div>
 
