@@ -20,34 +20,8 @@
   }
 
 
-.carousel-inner img {
-  filter:opacity(70%);
-  width: 100%; /* Set width to 100% */
-  margin: auto;
-  text-align: center;
-}
-.carousel-caption h3 {
-  color: #dd744b !important;
-
-}
-.carousel-caption p {
-  color: #020202 !important;
-
-
-  }
-
-@media (max-width: 300) {
-  .carousel-caption {
-
-    display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-  }
-}
-
-
-
-
 .container-fluid {
-  padding-top: 70px;
+  padding-top: 0px;
   padding-bottom: 70px;
 
   }
@@ -56,14 +30,21 @@
 .bg-2 {
   background-color: #474e5d;
   color: #ffffff;
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .bg-3 {
   background-color: #ffffff;
   color: black;
-  opacity: 50%;
+  opacity: 80%;
+
 }
 
+.bg-4 {
+  background-color: #ffffff;
+  color: black;
+  opacity: 80%;
+
+}
 
 
