@@ -1,90 +1,78 @@
-
-<form class="recipeForm">
+<form [formGroup]="form" (ngSubmit)="createRecipe()" id="recipeForm" class="row g-3">
   <div class="form-group form-margin ">
-  <label class="form-label">Titulo</label>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <i style="background:transparent;border:none"></i>
-    </span>
-    <input type="text" formControlName="title" class="form-control" required />
-
-  </div>
-</div>
-
-
-<div class="form-group form-margin">
-  <label class="form-label ">Categoria</label>
-  <div class="input-group ">
-    <select class="form-select" style="width: 350px; height: 35px">
-      <option selected>Selecionar Categoria</option>
-      <option value="1">Entradas e Petiscos</option>
-      <option value="2">Sopas</option>
-      <option value="3">Carne</option>
-      <option value="4">Peixe e Marisco</option>
-      <option value="5">Acompanhamentos</option>
-      <option value="6">Doces e Sobremesas</option>
-      <option value="7">Vegetariana</option>
-      <option value="8">Dieta e Light</option>
-      <option value="9">Pão, Broas e Bolas</option>
-      <option value="10">Bebidas</option>
-    </select>
-  </div>
-</div>
-
-<div class="form-group form-margin">
-  <label class="form-label ">Dificuldade</label>
-  <div class="input-group ">
-    <select class="form-select" style="width: 350px; height: 35px" id="dificuldade">
-      <option selected>Selecionar Dificuldade</option>
-      <option value="0">Muito Fácil</option>
-      <option value="1">Fácil</option>
-      <option value="2">Médio</option>
-      <option value="3">Difícil</option>
-      <option value="4">Muito Difícil</option>
-    </select>
-  </div>
-</div>
-
-
-<div class="form-group form-margin ">
-<label class="form-label">Ingredientes</label>
-<div class="input-group">
-  <span class="input-group-addon">
-    <i style="background:transparent;border:none"></i>
-  </span>
-  <input type="text" formControlName="ingredients" class="form-control" required/>
-</div>
-</div>
-
-<div class="form-group form-margin ">
-  <label class="form-label">Tempo de Execuçao</label>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <i style="background:transparent;border:none"></i>
-    </span>
-    <input type="time" formControlName="executionTime" class="form-control" required />
-  </div>
-</div>
-
-<div class="form-group form-margin ">
-  <label class="form-label">Descrição</label>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <i style="background:transparent;border:none"></i>
-    </span>
-    <textarea formControlName="description" class="form-control"  rows="10" cols=""></textarea>
-  </div>
-  <br>
-
-  <div class="form-group form-margin ">
-    <label class="form-label">Imagem</label>
+    <label class="form-label">Titulo</label>
     <div class="input-group">
-      <input type="hidden" name="MAX_FILE_SIZE" value="100" />
-      <input name="file" type="file" />
+      <span class="input-group-addon">
+        <i style="background:transparent;border:none"></i>
+      </span>
+      <input type="text" formControlName="name" class="form-control" required />
     </div>
   </div>
-</div>
+
+  <div class="form-group form-margin">
+    <label class="form-label ">Categoria</label>
+    <div class="input-group ">
+      <select class="form-select" style="width: 350px; height: 35px">
+        <option value="0" selected>Selecionar Categoria</option>
+        <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group form-margin">
+    <label class="form-label ">Dificuldade</label>
+    <div class="input-group ">
+      <select class="form-select" style="width: 350px; height: 35px" id="dificuldade">
+        <option selected>Selecionar Dificuldade</option>
+        <option value="0">Muito Fácil</option>
+        <option value="1">Fácil</option>
+        <option value="2">Médio</option>
+        <option value="3">Difícil</option>
+        <option value="4">Muito Difícil</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group form-margin ">
+    <label class="form-label">Tempo de Execuçao</label>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i style="background:transparent;border:none"></i>
+      </span>
+      <input type="time" formControlName="name" class="form-control" required />
+    </div>
+  </div>
+
+  <div class="form-group form-margin ">
+    <label class="form-label">Ingredientes</label>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i style="background:transparent;border:none"></i>
+      </span>
+      <input type="text" formControlName="ingredients" class="form-control" required />
+    </div>
+  </div>
+
+  <div class="form-group form-margin ">
+    <label class="form-label">Descrição</label>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i style="background:transparent;border:none"></i>
+      </span>
+      <textarea formControlName="description" class="form-control" rows="10" cols=""></textarea>
+    </div>
+    <br>
+
+    <div class="form-group form-margin ">
+      <label class="form-label">Imagem</label>
+      <div class="input-group">
+        <input type="hidden" name="MAX_FILE_SIZE" value="100" />
+        <input name="file" type="file" />
+      </div>
+      <br>
+      <div class="form-group form-margin">
+        <button type="submit" [disabled]="!form.valid" style="width: 320px; height: 35px">Publicar Receita</button>
+      </div>
+    </div>
+  </div>
 </form>
-<div>
- <input type="submit" value="Publicar Receita!"style="width: 350px; height: 35px">
-</div>
