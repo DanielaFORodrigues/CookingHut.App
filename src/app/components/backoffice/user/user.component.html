@@ -9,7 +9,8 @@
   <h3 class="text-center">Painel de Utilizador</h3>
   <ul class="nav nav-tabs">
     <li [ngClass]="{'active': selectedTab == 1}"><a (click)="selectedTab=1">Publicar Receita</a></li>
-    <li [ngClass]="{'active': selectedTab == 2}"><a (click)="selectedTab=2">Receitas Favoritas</a></li>
+    <li [ngClass]="{'active': selectedTab == 2}"><a (click)="selectedTab=2">Minhas Receitas</a></li>
+    <li [ngClass]="{'active': selectedTab == 3}"><a (click)="selectedTab=3">Receitas Favoritas</a></li>
     <li><a (click)="logout()">Logout</a></li>
   </ul>
 
@@ -19,9 +20,15 @@
       <h2>Publicar Nova Receita</h2>
       <app-createRecipe></app-createRecipe>
     </div>
+    <div class="tab-content">
+      <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}" >
+        <h2>Minhas Receitas</h2>
+        <p>Lista de Receitas Publicadas</p>
+      </div>
 
-    <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}">
+
+    <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 3}">
       <h2>Receitas Favoritas</h2>
-      <p>Lisa de Favoritas</p>
+      <p>Lista de Favoritas</p>
     </div>
   </div>
