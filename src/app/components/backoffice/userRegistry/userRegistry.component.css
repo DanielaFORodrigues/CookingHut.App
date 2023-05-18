@@ -29,7 +29,7 @@ font: 1.2rem'Fira Sans', sans-serif;
 
 #registoForm {
   max-width: 350px;
-  margin-left: 45%;
+  margin-left: 40%;
 }
 
 
@@ -51,4 +51,29 @@ font: 1.2rem'Fira Sans', sans-serif;
   width:49.99999%;
 
 }
+
+.container{
+  position: relative;
+  bottom: 20;
+  left: 30;
+  right: 35;
+  padding-bottom: 20px;
+
+  }
+
+
+.container-fluid {
+  padding-top: 0px;
+  padding-bottom: 70px;
+
+  }
+
+
+  .bg-3 {
+    background-color: #ffffff;
+    color: black;
+    opacity: 80%;
+
+  }
+
 

@@ -2,114 +2,128 @@
 
   <img src="../../../../assets/images/CookingHut_logo.png" alt="CookingHut Logo" width="300" height="200">
 
-  <h5>Bem-Vindo! Crie a Sua Conta CookingHut.</h5>
-
 </div>
 
 
-<form [formGroup]="form" (ngSubmit)="register()" id="registoForm" class="row g-3">
-
-  <div class="form-group form-margin half-form ">
-    <label class="form-label">Nome</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-user" style="background:transparent;border:none"></i>
-      </span>
-      <input type="text" formControlName="name" class="form-control" required />
-    </div>
-  </div>
-
-  <div class="form-group form-margin half-form">
-    <label class="form-label">Apelido</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-user" style="background:transparent;border:none"></i>
-      </span>
-      <input type="text" formControlName="surname" class="form-control" required />
-    </div>
-  </div>
-
-
-  <div class="form-group form-margin ">
-    <label class="form-label">Pais</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-globe" style="background:transparent;border:none"></i>
-      </span>
-      <input type="text" formControlName="country" class="form-control" required />
-    </div>
-  </div>
-
-
-  <div class="form-group form-margin ">
-    <label class="form-label">Cidade</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-home" style="background:transparent;border:none"></i>
-      </span>
-      <input type="text" formControlName="city" class="form-control" required/>
-    </div>
-  </div>
-
-  <div class="form-group form-margin ">
-    <label for="diaa">Data de Nascimento</label><br>
-    <input type="date" formControlName="birthDate"  id="birthDate" name="diaa" style="width: 200px; height: 35px" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-    <span class="validity"></span>
-  </div>
-
-  <div class="form-group form-margin ">
-    <label class="form-label">Email</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-envelope" style="background:transparent;border:none"></i>
-      </span>
-      <input type="text" formControlName="email" class="form-control" placeholder="exemplo@exemplo.com" required/>
-    </div>
-  </div>
-
-  <div class="form-group form-margin half-form">
-    <label class="form-label">Password</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-lock" style="background:transparent;border:none"></i>
-      </span>
-      <input type="password" formControlName="password" class="form-control" placeholder="********" required/>
-    </div>
-  </div>
-
-  <div class="form-group form-margin half-form ">
-    <label class="form-label">Confirmar Password</label>
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-lock" style="background:transparent;border:none"></i>
-      </span>
-      <input type="password" formControlName="confirmPassword" class="form-control" placeholder="********" required/>
-    </div>
-  </div>
-
-  <div class="content">
-      <div id="politicaPrivacidade">
-        <input class="input_box" name="checkbox" type="checkbox" value="termos" required/>
-        <a href="https://www.dgert.gov.pt/politica-de-privacidade-e-de-protecao-de-dados-pessoais-da-dgert"> Ao Aceitar Criar a Conta, Aceita os T&C e o RGPD.</a>
+<div class="container">
+  <div class="container-fluid bg-3 text-left">
+    <div class="row">
+      <div id="nav-home">
+        <ul class="nav nav-tabs">
+          <li>
+            <h3>Bem-Vindo ao Nosso Site! </h3>
+          </li>
+        </ul>
+        <h4>Faça Aqui o Seu Registo. </h4>
+        </div>
       </div>
+    <br><br>
+
+    <form [formGroup]="form" (ngSubmit)="register()" id="registoForm" class="row g-3">
+
+      <div class="form-group form-margin half-form ">
+        <label class="form-label">Nome</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-user" style="background:transparent;border:none"></i>
+          </span>
+          <input type="text" formControlName="name" class="form-control" required />
+        </div>
+      </div>
+
+      <div class="form-group form-margin half-form">
+        <label class="form-label">Apelido</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-user" style="background:transparent;border:none"></i>
+          </span>
+          <input type="text" formControlName="surname" class="form-control" required />
+        </div>
+      </div>
+
+
+      <div class="form-group form-margin ">
+        <label class="form-label">Pais</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-globe" style="background:transparent;border:none"></i>
+          </span>
+          <input type="text" formControlName="country" class="form-control" required />
+        </div>
+      </div>
+
+
+      <div class="form-group form-margin ">
+        <label class="form-label">Cidade</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-home" style="background:transparent;border:none"></i>
+          </span>
+          <input type="text" formControlName="city" class="form-control" required />
+        </div>
+      </div>
+
+      <div class="form-group form-margin ">
+        <label for="diaa">Data de Nascimento</label><br>
+        <input type="date" formControlName="birthDate" id="birthDate" name="diaa" style="width: 200px; height: 35px"
+          required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+        <span class="validity"></span>
+      </div>
+
+      <div class="form-group form-margin ">
+        <label class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-envelope" style="background:transparent;border:none"></i>
+          </span>
+          <input type="text" formControlName="email" class="form-control" placeholder="exemplo@exemplo.com" required />
+        </div>
+      </div>
+
+      <div class="form-group form-margin half-form">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-lock" style="background:transparent;border:none"></i>
+          </span>
+          <input type="password" formControlName="password" class="form-control" placeholder="********" required />
+        </div>
+      </div>
+
+      <div class="form-group form-margin half-form ">
+        <label class="form-label">Confirmar Password</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-lock" style="background:transparent;border:none"></i>
+          </span>
+          <input type="password" formControlName="confirmPassword" class="form-control" placeholder="********"
+            required />
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="politicaPrivacidade">
+          <input class="input_box" name="checkbox" type="checkbox" value="termos" required />
+          <a href="https://www.dgert.gov.pt/politica-de-privacidade-e-de-protecao-de-dados-pessoais-da-dgert"> Ao
+            Aceitar Criar a Conta, Aceita os T&C e o RGPD.</a>
+        </div>
+        <br>
+        <div class="form-group form-margin">
+          <button type="submit" [disabled]="!form.valid" style="width: 320px; height: 35px">Criar Conta</button>
+        </div>
+      </div>
+
       <br>
-      <div class="form-group form-margin">
-        <button type="submit" [disabled]="!form.valid" style="width: 320px; height: 35px">Criar Conta</button>
+
+      <div>
+        <p class="linkLogin">
+          Já possui uma conta?
+          <a href="login">Faça o Seu Login Aqui</a>
+        </p>
       </div>
-  </div>
 
-  <br>
-
-  <div>
-    <p class="linkLogin">
-      Já possui uma conta?
-      <a href="login">Faça o Seu Login Aqui</a>
-    </p>
-  </div>
-</form>
+    </form>
 
     <div class="errorRegisto">
       <p-toast></p-toast>
     </div>
-
-
