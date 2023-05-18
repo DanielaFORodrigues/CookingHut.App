@@ -6,7 +6,7 @@
 
 
 <div id="nav-user" class="container">
-  <h3 class="text-center">Área de utilizador</h3>
+  <h2 class="text-center">Área de utilizador</h2>
   <ul class="nav nav-tabs">
     <li [ngClass]="{'active': selectedTab == 1}"><a (click)="selectedTab=1">Publicar Receita</a></li>
     <li [ngClass]="{'active': selectedTab == 2}"><a (click)="selectedTab=2">Minhas Receitas</a></li>
@@ -17,18 +17,18 @@
 
   <div class="tab-content">
     <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 1}" >
-      <h2>Publicar Nova Receita</h2>
+      <h3>Publicar Nova Receita</h3>
       <app-createRecipe></app-createRecipe>
     </div>
     <div class="tab-content">
       <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}" >
-        <h2>Minhas Receitas</h2>
+        <h3>Minhas Receitas</h3>
         <p>Lista de Receitas Publicadas</p>
       </div>
 
 
     <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 3}">
-      <h2>Receitas Favoritas</h2>
+      <h3>Receitas Favoritas</h3>
       <p>Lista de Favoritas</p>
     </div>
   </div>
