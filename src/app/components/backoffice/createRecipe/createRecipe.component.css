@@ -18,3 +18,11 @@ textarea {
   box-sizing: border-box;
 }
 
+
+button{
+
+  margin: 0.4rem;
+  display: inline-block;
+ }
+
+

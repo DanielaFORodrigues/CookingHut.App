@@ -16,6 +16,8 @@ export class CreateRecipeComponent implements OnInit {
   recipe!: any;
   categories: Category[] = [];
 
+  ingredientsCount: number = 1;
+
   form = new FormGroup({
     id: new FormControl(0),
     creationDate: new FormControl(new Date()),
@@ -25,6 +27,7 @@ export class CreateRecipeComponent implements OnInit {
     executionTime: new FormControl('',[Validators.required]),
     difficulty: new FormControl(0,[Validators.min(0), Validators.required]),
     categoryId: new FormControl(0,[Validators.min(0), Validators.required]),
+    ingredient1: new FormControl('',[Validators.required]),
   });
 
   constructor(
@@ -49,9 +52,35 @@ export class CreateRecipeComponent implements OnInit {
       this.recipeService.create(this.recipe).subscribe(response => {
         alert("Receita Publicada Com Sucesso!");
       this.form.reset;
+      this.ingredientsCount = 1;
       });
 
   }
 
+  addNewIngredient() {
+    const name =  `ingredient${++this.ingredientsCount}`;
+    const newInput = document.createElement('input');
+    newInput.type = "text";
+    newInput.name = name;
+    newInput.id = name;
+    newInput.className ="form-control";
+
+    document.getElementById("ingredientsDiv")?.appendChild(newInput);
+    // this.form.addControl(newInput.name, new FormControl('', Validators.required));
+  }
+  removeNewIngredient(){
+
+    if (this.ingredientsCount === 1) {
+        return;
+    }
+
+    const elementName = `ingredient${this.ingredientsCount--}`;
+    const elementToRemove = document.getElementById(elementName);
+
+    if (elementToRemove) {
+      document.getElementById("ingredientsDiv")?.removeChild(elementToRemove);
+       // this.form.removeControl(newInput.name, new FormControl('', Validators.required));
+    }
+  }
 }
 
