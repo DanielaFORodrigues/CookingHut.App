@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -16,24 +16,29 @@ export class CreateRecipeComponent implements OnInit {
   recipe!: any;
   categories: Category[] = [];
 
-  ingredientsCount: number = 1;
+  ingredientsCount: number = 0;
 
-  form = new FormGroup({
-    id: new FormControl(0),
-    creationDate: new FormControl(new Date()),
-    userId: new FormControl(this.userContext.getCurrentSession()?.id),
-    name: new FormControl('',[Validators.required]),
-    description: new FormControl('',[Validators.required]),
-    executionTime: new FormControl('',[Validators.required]),
-    difficulty: new FormControl(0,[Validators.min(0), Validators.required]),
-    categoryId: new FormControl(0,[Validators.min(0), Validators.required]),
-    ingredient1: new FormControl('',[Validators.required]),
-  });
+  form: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
     private userContext: UserContextService,
     private categoryService: CategoryService,
-    private recipeService: RecipeService) { }
+    private recipeService: RecipeService)
+    {
+      this.form = new FormGroup({
+        id: new FormControl(0),
+        creationDate: new FormControl(new Date()),
+        userId: new FormControl(this.userContext.getCurrentSession()?.id),
+        name: new FormControl('',[Validators.required]),
+        description: new FormControl('',[Validators.required]),
+        executionTime: new FormControl('',[Validators.required]),
+        difficulty: new FormControl(0,[Validators.min(0), Validators.required]),
+        categoryId: new FormControl(0,[Validators.min(0), Validators.required]),
+        ingredients: this.formBuilder.array([])
+      });
+
+    }
 
   ngOnInit() {
     this.categoryService.getAll().subscribe(response => {
@@ -43,11 +48,17 @@ export class CreateRecipeComponent implements OnInit {
     this.form.controls['categoryId'].setValue(-1, {onlySelf: true});
     this.form.controls['difficulty'].setValue(-1, {onlySelf: true});
 
+    this.addNewIngredient();
     document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
+  }
+
+  get ingredients() : FormArray {
+    return this.form.controls["ingredients"] as FormArray;
   }
 
   createRecipe() {
       this.recipe = this.form.value;
+      alert(JSON.stringify(this.recipe));
       this.recipe.categoryId = Number(this.recipe.categoryId);
       this.recipe.difficulty = Number(this.recipe.difficulty);
 
@@ -60,40 +71,26 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   addNewIngredient() {
-    const name =  `ingredient${++this.ingredientsCount}`;
-    const newInput = document.createElement('input');
-    newInput.type = "text";
-    newInput.id = name;
-    newInput.name = name;
-    newInput.className ="form-control";
-    newInput.setAttribute("formControlName", name);
-    newInput.setAttribute("required", "true");
 
-    document.getElementById("ingredientsDiv")?.appendChild(newInput);
+    this.ingredientsCount++;
+
+    const ingredientForm = this.formBuilder.group({
+      ingredientName: '',//['', Validators.required],
+    });
+
+    this.ingredients.push(ingredientForm);
     document.getElementById("btnRemoveIngredient")?.removeAttribute("disabled");
-
-    const formGroup = this.form as FormGroup;
-    formGroup.addControl(name, new FormControl('', [Validators.required]));
   }
 
   removeNewIngredient(){
-
     if (this.ingredientsCount === 1) {
         return;
     }
 
-    const elementName = `ingredient${this.ingredientsCount--}`;
-    const elementToRemove = document.getElementById(elementName);
+    this.ingredients.removeAt(--this.ingredientsCount);
 
-    if (elementToRemove) {
-      document.getElementById("ingredientsDiv")?.removeChild(elementToRemove);
-
-      const formGroup = this.form as FormGroup;
-      formGroup.removeControl(elementName);
-
-       if (this.ingredientsCount == 1) {
-        document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
-       }
+    if (this.ingredientsCount == 1) {
+      document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
     }
   }
 }

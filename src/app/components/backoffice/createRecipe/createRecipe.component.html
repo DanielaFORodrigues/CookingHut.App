@@ -49,7 +49,14 @@
       <span class="input-group-addon ">
         <i style="background:transparent;border:none"></i>
       </span>
-      <input formControlName="ingredient1" type="text" class="form-control" required />
+      <ng-container formArrayName="ingredients">
+        <ng-container *ngFor="let ingredientForm of ingredients.controls; let i = index">
+            <div class="lesson-form-row">
+                <input type="text" formControlName="ingredientName" class="form-control" />
+            </div>
+        </ng-container>
+    </ng-container>
+
     </div>
     <br>
         <button id="btnAddIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="addNewIngredient()">Adicionar</button>
