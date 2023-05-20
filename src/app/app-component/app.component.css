@@ -12,13 +12,13 @@
 }
 
 .active{
-  background-color:    rgb(137, 199, 168);
-  border:   rgb(137, 199, 168);
+  background-color: rgb(145, 196, 145);
+  border: rgb(145, 196, 145);
 }
 
 .container-fluid{
-  background-color:  rgb(137, 199, 168);
-  border:  rgb(137, 199, 168);
+  background-color:  rgb(145, 196, 145);
+  border:  rgb(145, 196, 145);
 
 }
 
@@ -38,7 +38,7 @@ body {
 /* #footer {
   position: fixed;
   bottom: 0;
-  background-color:  rgb(97, 184, 140);
+  background-color:  rgb(145, 196, 145);
   color: #FFF;
   width: 100%;
   height: 100px;

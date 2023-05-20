@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -42,6 +42,8 @@ export class CreateRecipeComponent implements OnInit {
 
     this.form.controls['categoryId'].setValue(-1, {onlySelf: true});
     this.form.controls['difficulty'].setValue(-1, {onlySelf: true});
+
+    document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
   }
 
   createRecipe() {
@@ -61,13 +63,19 @@ export class CreateRecipeComponent implements OnInit {
     const name =  `ingredient${++this.ingredientsCount}`;
     const newInput = document.createElement('input');
     newInput.type = "text";
-    newInput.name = name;
     newInput.id = name;
+    newInput.name = name;
     newInput.className ="form-control";
+    newInput.setAttribute("formControlName", name);
+    newInput.setAttribute("required", "true");
 
     document.getElementById("ingredientsDiv")?.appendChild(newInput);
-    // this.form.addControl(newInput.name, new FormControl('', Validators.required));
+    document.getElementById("btnRemoveIngredient")?.removeAttribute("disabled");
+
+    const formGroup = this.form as FormGroup;
+    formGroup.addControl(name, new FormControl('', [Validators.required]));
   }
+
   removeNewIngredient(){
 
     if (this.ingredientsCount === 1) {
@@ -79,7 +87,13 @@ export class CreateRecipeComponent implements OnInit {
 
     if (elementToRemove) {
       document.getElementById("ingredientsDiv")?.removeChild(elementToRemove);
-       // this.form.removeControl(newInput.name, new FormControl('', Validators.required));
+
+      const formGroup = this.form as FormGroup;
+      formGroup.removeControl(elementName);
+
+       if (this.ingredientsCount == 1) {
+        document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
+       }
     }
   }
 }

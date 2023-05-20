@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="createRecipe()" id="recipeForm" class="row g-3">
+<form [formGroup]="form" id="recipeForm" class="row g-3">
   <div class="form-group form-margin ">
     <label class="form-label">Titulo</label>
     <div class="input-group">
@@ -52,11 +52,9 @@
       <input formControlName="ingredient1" type="text" class="form-control" required />
     </div>
     <br>
-        <button class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="addNewIngredient()"> Adicionar </button>
-        <button class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="removeNewIngredient()"> Eliminar</button>
+        <button id="btnAddIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="addNewIngredient()">Adicionar</button>
+        <button id="btnRemoveIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="removeNewIngredient()">Eliminar</button>
     </div>
-
-
 
   <div class="form-group form-margin ">
     <label class="form-label">Descrição</label>
@@ -76,7 +74,7 @@
       </div>
       <br>
       <div class="form-group form-margin">
-        <button type="submit" [disabled]="!form.valid" style="width: 320px; height: 35px">Publicar Receita</button>
+        <button type="submit" [disabled]="!form.valid" style="width: 320px; height: 35px" (click)="createRecipe()">Publicar Receita</button>
       </div>
     </div>
   </div>
