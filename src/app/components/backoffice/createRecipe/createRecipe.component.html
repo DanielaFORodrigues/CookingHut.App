@@ -52,7 +52,10 @@
       <ng-container formArrayName="ingredients">
         <ng-container *ngFor="let ingredientForm of ingredients.controls; let i = index" [formGroupName]="i">
             <div class="lesson-form-row">
-                <input type="text" formControlName="ingredientName" class="form-control" />
+              <select  formControlName="name" class="form-select" style="width: 350px; height: 35px">
+                <option value="-1" selected>Selecione Ingrediente</option>
+                <option *ngFor="let ingredient of ingredientsList" ngValue="{{ ingredient.id }}">{{ ingredient.name }}</option>
+              </select>
             </div>
         </ng-container>
     </ng-container>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Category } from 'src/app/models/category';
+import { Ingredient } from 'src/app/models/ingredient';
 import { CategoryService } from 'src/app/services/category.service';
+import { IngredientService } from 'src/app/services/ingredient.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 
@@ -15,6 +17,7 @@ import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 export class CreateRecipeComponent implements OnInit {
   recipe!: any;
   categories: Category[] = [];
+  ingredientsList: Ingredient[] = [];
 
   ingredientsCount: number = 0;
 
@@ -24,6 +27,7 @@ export class CreateRecipeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userContext: UserContextService,
     private categoryService: CategoryService,
+    private ingredientService: IngredientService,
     private recipeService: RecipeService)
     {
       this.form = new FormGroup({
@@ -45,6 +49,10 @@ export class CreateRecipeComponent implements OnInit {
       this.categories = response;
     });
 
+    this.ingredientService.getAll().subscribe(response => {
+      this.ingredientsList = response;
+    });
+
     this.form.controls['categoryId'].setValue(-1, {onlySelf: true});
     this.form.controls['difficulty'].setValue(-1, {onlySelf: true});
 
@@ -58,6 +66,7 @@ export class CreateRecipeComponent implements OnInit {
 
   createRecipe() {
       this.recipe = this.form.value;
+      alert(JSON.stringify(this.recipe));
 
       this.recipe.categoryId = Number(this.recipe.categoryId);
       this.recipe.difficulty = Number(this.recipe.difficulty);
@@ -70,14 +79,14 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   addNewIngredient() {
-
     this.ingredientsCount++;
 
     const ingredientForm = this.formBuilder.group({
-      ingredientName: ['', Validators.required],
+      name: [0,[Validators.min(0), Validators.required]],
     });
-
     this.ingredients.push(ingredientForm);
+    ingredientForm.controls['name'].setValue(-1, {onlySelf: true});
+
     document.getElementById("btnRemoveIngredient")?.removeAttribute("disabled");
   }
 
