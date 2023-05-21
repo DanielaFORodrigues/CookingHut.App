@@ -15,9 +15,7 @@
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Receitas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Novidades</a></li>
-          <li><a href="#">Categorias</a></li>
-          <li><a href="#">Ingredientes</a></li>
+          <li><a href="receitas?categoryId={{category.id}}" *ngFor="let category of categories">{{ category.name }}</a></li>
         </ul>
       </li>
       <li><a href="#">Mais Populares</a></li>
