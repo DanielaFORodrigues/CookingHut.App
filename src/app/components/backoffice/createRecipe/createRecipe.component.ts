@@ -39,7 +39,7 @@ export class CreateRecipeComponent implements OnInit {
         executionTime: new FormControl('',[Validators.required]),
         difficulty: new FormControl(0,[Validators.min(0), Validators.required]),
         categoryId: new FormControl(0,[Validators.min(0), Validators.required]),
-        ingredients: this.formBuilder.array([])
+        recipeIngredients: this.formBuilder.array([])
       });
 
     }
@@ -60,13 +60,12 @@ export class CreateRecipeComponent implements OnInit {
     document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
   }
 
-  get ingredients() : FormArray {
-    return this.form.controls["ingredients"] as FormArray;
+  get recipeIngredients() : FormArray {
+    return this.form.controls["recipeIngredients"] as FormArray;
   }
 
   createRecipe() {
       this.recipe = this.form.value;
-      alert(JSON.stringify(this.recipe));
 
       this.recipe.categoryId = Number(this.recipe.categoryId);
       this.recipe.difficulty = Number(this.recipe.difficulty);
@@ -82,10 +81,10 @@ export class CreateRecipeComponent implements OnInit {
     this.ingredientsCount++;
 
     const ingredientForm = this.formBuilder.group({
-      name: [0,[Validators.min(0), Validators.required]],
+      ingredientId: [0,[Validators.min(0), Validators.required]],
     });
-    this.ingredients.push(ingredientForm);
-    ingredientForm.controls['name'].setValue(-1, {onlySelf: true});
+    this.recipeIngredients.push(ingredientForm);
+    ingredientForm.controls['ingredientId'].setValue(-1, {onlySelf: true});
 
     document.getElementById("btnRemoveIngredient")?.removeAttribute("disabled");
   }
@@ -95,7 +94,7 @@ export class CreateRecipeComponent implements OnInit {
         return;
     }
 
-    this.ingredients.removeAt(--this.ingredientsCount);
+    this.recipeIngredients.removeAt(--this.ingredientsCount);
 
     if (this.ingredientsCount == 1) {
       document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
