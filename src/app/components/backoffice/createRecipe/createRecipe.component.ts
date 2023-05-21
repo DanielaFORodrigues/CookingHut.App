@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
 import { MessageService } from 'primeng/api';
 import { Category } from 'src/app/models/category';
 import { Ingredient } from 'src/app/models/ingredient';
+import { RecipeIngredient } from 'src/app/models/recipeIngredient';
 import { CategoryService } from 'src/app/services/category.service';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { RecipeService } from 'src/app/services/recipe.service';
@@ -70,6 +71,12 @@ export class CreateRecipeComponent implements OnInit {
       this.recipe.categoryId = Number(this.recipe.categoryId);
       this.recipe.difficulty = Number(this.recipe.difficulty);
 
+      this.recipe.recipeIngredients.forEach(function (ingredient: RecipeIngredient) {
+        ingredient.ingredientId = Number(ingredient.ingredientId);
+        ingredient.quantity = Number(ingredient.quantity);
+        ingredient.unit = Number(ingredient.unit);
+    });
+
       this.recipeService.create(this.recipe).subscribe(response => {
         alert("Receita Publicada Com Sucesso!");
         window.location.reload();
@@ -81,10 +88,13 @@ export class CreateRecipeComponent implements OnInit {
     this.ingredientsCount++;
 
     const ingredientForm = this.formBuilder.group({
-      ingredientId: [0,[Validators.min(0), Validators.required]],
+      ingredientId: [0, [Validators.min(0), Validators.required]],
+      quantity: [null, [Validators.min(0), Validators.required, Validators.pattern("^[1-9][0-9]*")]],
+      unit: [0, [Validators.min(0), Validators.required]],
     });
     this.recipeIngredients.push(ingredientForm);
     ingredientForm.controls['ingredientId'].setValue(-1, {onlySelf: true});
+    ingredientForm.controls['unit'].setValue(-1, {onlySelf: true});
 
     document.getElementById("btnRemoveIngredient")?.removeAttribute("disabled");
   }
