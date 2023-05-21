@@ -50,7 +50,7 @@
         <i style="background:transparent;border:none"></i>
       </span>
       <ng-container formArrayName="ingredients">
-        <ng-container *ngFor="let ingredientForm of ingredients.controls; let i = index">
+        <ng-container *ngFor="let ingredientForm of ingredients.controls; let i = index" [formGroupName]="i">
             <div class="lesson-form-row">
                 <input type="text" formControlName="ingredientName" class="form-control" />
             </div>

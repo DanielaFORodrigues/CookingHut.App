@@ -58,14 +58,13 @@ export class CreateRecipeComponent implements OnInit {
 
   createRecipe() {
       this.recipe = this.form.value;
-      alert(JSON.stringify(this.recipe));
+
       this.recipe.categoryId = Number(this.recipe.categoryId);
       this.recipe.difficulty = Number(this.recipe.difficulty);
 
       this.recipeService.create(this.recipe).subscribe(response => {
         alert("Receita Publicada Com Sucesso!");
-      this.form.reset;
-      this.ingredientsCount = 1;
+        window.location.reload();
       });
 
   }
@@ -75,7 +74,7 @@ export class CreateRecipeComponent implements OnInit {
     this.ingredientsCount++;
 
     const ingredientForm = this.formBuilder.group({
-      ingredientName: '',//['', Validators.required],
+      ingredientName: ['', Validators.required],
     });
 
     this.ingredients.push(ingredientForm);
