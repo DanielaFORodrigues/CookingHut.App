@@ -55,7 +55,7 @@
       <ng-container formArrayName="recipeIngredients">
         <ng-container *ngFor="let ingredientForm of recipeIngredients.controls; let i = index" [formGroupName]="i">
 
-          <div id="inline">
+          <div id="inlineIngredient">
             <div class="form-group form-margin ">
               <label class="form-label">Ingrediente nº {{ i+1 }}</label>
               <div class="lesson-form-row">
@@ -120,15 +120,26 @@
   <button id="btnRemoveIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px"
     (click)="removeNewIngredient()">Eliminar</button>
 
+<br>
+<br>
+
   <div class="form-group form-margin ">
     <label class="form-label">Descrição</label>
     <div class="input-group">
       <span class="input-group-addon">
         <i style="background:transparent;border:none"></i>
       </span>
-      <textarea formControlName="description" class="form-control" rows="10" cols=""></textarea>
+      <textarea formControlName="description" class="form-control"
+      style="width: 325px; font: size 12px; height: 180px; border-color:lightgray;" placeholder=
+"Passo 1 -
+
+Passo 2 -
+
+Passo 3 -
+..." required></textarea>
     </div>
     <br>
+
 
     <div class="form-group form-margin ">
       <label class="form-label">Imagem Receita</label>

@@ -13,9 +13,7 @@
 
 textarea {
   resize: none;
-  width: 700px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+
 }
 
 
@@ -23,11 +21,12 @@ button{
 
   margin: 0.4rem;
   display: inline-block;
+
  }
 
 
 
- #inline{
+ #inlineIngredient{
 
 display: inline-flex;
 text-align: center;
