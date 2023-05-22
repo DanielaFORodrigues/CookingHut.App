@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -5,9 +6,16 @@ import { Category } from 'src/app/models/category';
 import { Ingredient } from 'src/app/models/ingredient';
 import { RecipeIngredient } from 'src/app/models/recipeIngredient';
 import { CategoryService } from 'src/app/services/category.service';
+import { ImageUploadService } from 'src/app/services/imageUpload.service';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
+
+class ImageSnippet {
+  savedImageName: string | null = null;
+
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-createRecipe',
@@ -22,6 +30,8 @@ export class CreateRecipeComponent implements OnInit {
 
   ingredientsCount: number = 0;
 
+  selectedImageFile: ImageSnippet | null;
+
   form: FormGroup;
 
   constructor(
@@ -29,7 +39,8 @@ export class CreateRecipeComponent implements OnInit {
     private userContext: UserContextService,
     private categoryService: CategoryService,
     private ingredientService: IngredientService,
-    private recipeService: RecipeService)
+    private recipeService: RecipeService,
+    private imageUploadService: ImageUploadService)
     {
       this.form = new FormGroup({
         id: new FormControl(0),
@@ -43,6 +54,7 @@ export class CreateRecipeComponent implements OnInit {
         recipeIngredients: this.formBuilder.array([])
       });
 
+      this.selectedImageFile = null;
     }
 
   ngOnInit() {
@@ -66,10 +78,16 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   createRecipe() {
+      if (!this.selectedImageFile || !this.selectedImageFile.savedImageName) {
+        alert("Faça upload da imagem da receita");
+        return;
+      }
+
       this.recipe = this.form.value;
 
       this.recipe.categoryId = Number(this.recipe.categoryId);
       this.recipe.difficulty = Number(this.recipe.difficulty);
+      this.recipe.image = this.selectedImageFile.savedImageName;
 
       this.recipe.recipeIngredients.forEach(function (ingredient: RecipeIngredient) {
         ingredient.ingredientId = Number(ingredient.ingredientId);
@@ -109,6 +127,25 @@ export class CreateRecipeComponent implements OnInit {
     if (this.ingredientsCount == 1) {
       document.getElementById("btnRemoveIngredient")?.setAttribute("disabled", "true");
     }
+  }
+
+  processImageFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      this.selectedImageFile = new ImageSnippet(event.target.result, file);
+
+      this.imageUploadService.uploadImage(this.selectedImageFile.file).subscribe( response => {
+
+        this.selectedImageFile!.savedImageName = response;
+      },
+      (error: HttpErrorResponse) => {
+        this.selectedImageFile!.savedImageName = null;
+      });
+    });
+
+    reader.readAsDataURL(file);
   }
 }
 

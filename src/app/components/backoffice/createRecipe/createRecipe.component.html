@@ -144,8 +144,7 @@ Passo 3 -
     <div class="form-group form-margin ">
       <label class="form-label">Imagem Receita</label>
       <div class="input-group">
-        <input type="hidden" name="MAX_FILE_SIZE" value="100" />
-        <input name="file" type="file" />
+        <input #imageInput type="file" accept="image/*" (change)="processImageFile(imageInput)" />
       </div>
       <br>
       <div class="form-group form-margin">
