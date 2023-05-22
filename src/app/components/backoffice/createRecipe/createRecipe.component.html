@@ -12,7 +12,10 @@
   <div class="form-group form-margin">
     <label class="form-label ">Categoria</label>
     <div class="input-group ">
-      <select  formControlName="categoryId" class="form-select" style="width: 350px; height: 35px">
+      <span class="input-group-addon">
+        <i style="background:transparent;border:none"></i>
+      </span>
+      <select formControlName="categoryId" class="form-select" style="width: 315px; height: 35px">
         <option value="-1">Selecionar Categoria</option>
         <option *ngFor="let category of categories" ngValue="{{ category.id }}">{{ category.name }}</option>
       </select>
@@ -22,7 +25,10 @@
   <div class="form-group form-margin">
     <label class="form-label ">Dificuldade</label>
     <div class="input-group ">
-      <select class="form-select" style="width: 350px; height: 35px" formControlName="difficulty">
+      <span class="input-group-addon">
+        <i style="background:transparent;border:none"></i>
+      </span>
+      <select class="form-select" style="width: 315px; height: 35px" formControlName="difficulty">
         <option value="-1">Selecionar Dificuldade</option>
         <option value="0">Muito Fácil</option>
         <option value="1">Fácil</option>
@@ -44,44 +50,75 @@
   </div>
 
   <div class="form-group form-margin ">
-    <label class="form-label">Ingredientes</label>
     <div class="input-group" id="ingredientsDiv">
-      <span class="input-group-addon ">
-        <i style="background:transparent;border:none"></i>
-      </span>
+
       <ng-container formArrayName="recipeIngredients">
         <ng-container *ngFor="let ingredientForm of recipeIngredients.controls; let i = index" [formGroupName]="i">
-            <div class="lesson-form-row">
-              <select  formControlName="ingredientId" class="form-select" style="width: 350px; height: 35px">
-                <option value="-1" selected>Selecione Ingrediente</option>
-                <option *ngFor="let ingredient of ingredientsList" ngValue="{{ ingredient.id }}">{{ ingredient.name }}</option>
-              </select>
-            </div>
-            <div class="lesson-form-row">
-              <input type="text" formControlName="quantity" class="form-control" placeholder="Indique a Quantidade" required />
-            </div>
-            <select class="form-select" style="width: 350px; height: 35px" formControlName="unit">
-              <option value="-1">Selecione a Medida</option>
-              <option value="0">Gramas</option>
-              <option value="1">Quilogramas</option>
-              <option value="2">Mililitros</option>
-              <option value="3">Centilitros</option>
-              <option value="4">Decilitros</option>
-              <option value="5">Litros</option>
-              <option value="6">Chávena de Chá</option>
-              <option value="7">Colher de Café</option>
-              <option value="8">Colher de Chá</option>
-              <option value="9">Colher de Sopa</option>
 
-            </select>
+          <div id="inline">
+            <div class="form-group form-margin ">
+              <label class="form-label">Ingrediente nº {{ i+1 }}</label>
+              <div class="lesson-form-row">
+                <div class="input-group">
+                  <span class="input-group-addon ">
+                    <i style="background:transparent;border:none"></i>
+                  </span>
+                  <select formControlName="ingredientId" class="form-select" style="width: 180px; height: 35px">
+                    <option value="-1" selected>Selecione Ingrediente</option>
+                    <option *ngFor="let ingredient of ingredientsList" ngValue="{{ ingredient.id }}">{{ ingredient.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-margin ">
+              <label class="form-label">Quantidade</label>
+              <div class="lesson-form-row">
+                <div class="input-group">
+                  <span class="input-group-addon ">
+                    <i style="background:transparent;border:none"></i>
+                  </span>
+                  <input type="text" formControlName="quantity" style="width: 70px; height: 35px" class="form-control" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-margin ">
+              <label class="form-label">Medida</label>
+              <div class="lesson-form-row">
+                <div class="input-group">
+                  <span class="input-group-addon ">
+                    <i style="background:transparent;border:none"></i>
+                  </span>
+                  <select class="form-select" style="width: 180px; height: 35px" formControlName="unit">
+                    <option value="-1">Selecione a Medida</option>
+                    <option value="0">Gramas</option>
+                    <option value="1">Quilogramas</option>
+                    <option value="2">Mililitros</option>
+                    <option value="3">Centilitros</option>
+                    <option value="4">Decilitros</option>
+                    <option value="5">Litros</option>
+                    <option value="6">Chávena de Chá</option>
+                    <option value="7">Colher de Café</option>
+                    <option value="8">Colher de Chá</option>
+                    <option value="9">Unidade(s)</option>
+                    <option value="10">Lata(s)</option>
+                    <option value="11">Pacote(s)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </ng-container>
-    </ng-container>
+      </ng-container>
+    </div>
+  </div>
 
-    </div>
-    <br>
-        <button id="btnAddIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="addNewIngredient()">Adicionar</button>
-        <button id="btnRemoveIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px" (click)="removeNewIngredient()">Eliminar</button>
-    </div>
+  <button id="btnAddIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px"
+    (click)="addNewIngredient()">Adicionar</button>
+  <button id="btnRemoveIngredient" class="btn btn-outline-secondary" style="width: 100px; height: 30px"
+    (click)="removeNewIngredient()">Eliminar</button>
 
   <div class="form-group form-margin ">
     <label class="form-label">Descrição</label>
@@ -101,7 +138,8 @@
       </div>
       <br>
       <div class="form-group form-margin">
-        <button type="submit" [disabled]="!form.valid" style="width: 320px; height: 35px" (click)="createRecipe()">Publicar Receita</button>
+        <button type="submit" [disabled]="!form.valid" style="width: 315px; height: 35px"
+          (click)="createRecipe()">Publicar Receita</button>
       </div>
     </div>
   </div>
