@@ -18,6 +18,7 @@ import { UserComponent } from "./components/backoffice/user/user.component";
 import { ToastModule } from 'primeng/toast';
 import { UserRegistryComponent } from "./components/backoffice/userRegistry/userRegistry.component";
 import { MessageService } from "primeng/api";
+import { ViewRecipeComponent } from "./components/backoffice/viewRecipe/viewRecipe.component";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MessageService } from "primeng/api";
     CreateRecipeComponent,
     RecipeIngredientComponent,
     UserRegistryComponent,
+    ViewRecipeComponent,
     UserComponent,
   ],
   imports: [

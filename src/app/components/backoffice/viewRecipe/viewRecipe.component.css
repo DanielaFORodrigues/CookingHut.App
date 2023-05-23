@@ -1,0 +1,127 @@
+.form-margin {
+
+  padding: 0.5rem;
+  margin-bottom: 1%;
+
+}
+
+.logotipo {
+
+  margin-left: 45%;
+  font: 1.2rem'Fira Sans', sans-serif;
+
+}
+
+
+.container{
+  position: relative;
+  bottom: 20;
+  left: 30;
+  right: 35;
+  padding-bottom: 20px;
+
+  }
+
+
+.container-fluid {
+  padding-top: 0px;
+  padding-bottom: 70px;
+
+  }
+
+
+  .bg-3 {
+    background-color: #ffffff;
+    color: black;
+    opacity: 80%;
+
+  }
+
+
+  .conteudo{
+
+    display: flex;
+  }
+
+  li {
+
+    list-style-position: inside;
+    line-height: 35px;
+}
+
+ul {
+    margin-bottom: 40px;
+
+}
+
+
+
+.card0 {
+  color:  rgb(75, 143, 105);
+  text-align: left;
+  width: 1100px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(196, 221, 205);
+  border-radius: 5px;
+  font-weight: 300;
+
+}
+
+
+
+.card1 {
+  text-align: left;
+  width: 480px;
+  margin: auto;
+  padding: 50px;
+  background-color: rgb(196, 221, 205);
+  margin: 50px auto;
+  border-radius: 5px;
+  font-weight: 300;
+  background-image: url("../../../../assets/images/saco_retro_card_recipes.png");
+  background-position: bottom;
+  background-position-x: right;
+  background-size: 100px;
+  background-repeat: no-repeat;
+}
+
+
+.card2 {
+  text-align: left;
+  width: 480px;
+  margin: auto;
+  padding: 50px;
+  background-color: rgb(196, 221, 205);
+  margin: 50px auto;
+  border-radius: 5px;
+  font-weight: 300;
+  background-image: url("../../../../assets/images/batedeira_retro_card_recipe.png");
+  background-position: bottom;
+  background-position-x: right;
+  background-size: 90px;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  color:  rgb(75, 143, 105);
+  margin-bottom: 20px;
+}
+
+
+.card3 {
+  text-align: left;
+  width: 1100px;
+  height: 300px;
+  margin: auto;
+  padding: 50px;
+  background-color: rgb(196, 221, 205);
+  margin: 50px auto;
+  border-radius: 5px;
+  font-weight: 300;
+
+
+}
