@@ -20,6 +20,7 @@ export class ViewRecipeComponent implements OnInit {
   recipe!: Recipe | null;
   category!: Category | null;
   recipeIngredients!: RecipeIngredient[] | null;
+  recipeDescription!: string[] | null;
 
   constructor(
     private recipeService: RecipeService,
@@ -44,6 +45,8 @@ export class ViewRecipeComponent implements OnInit {
         this.getRecipeUserName(response.userId);
         this.getCategory(response.categoryId);
         this.getRecipeIngredients(response.id);
+
+        this.recipeDescription = this.recipe.description.split(/\r?\n/);
       },
       (error: HttpErrorResponse) => {
         this.router.navigate(['home']);
@@ -72,8 +75,6 @@ export class ViewRecipeComponent implements OnInit {
   getRecipeIngredients(recipeId: number) {
     this.recipeIngredientsService.getByRecipeId(recipeId).subscribe(response => {
       this.recipeIngredients = response;
-
-      alert(JSON.stringify(this.recipeIngredients));
     },
     (error: HttpErrorResponse) => {
       this.router.navigate(['home']);

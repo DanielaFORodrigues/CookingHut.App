@@ -103,6 +103,11 @@ ul {
   background-repeat: no-repeat;
 }
 
+.card2 ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+
 h1 {
   text-align: center;
   font-weight: 400;
