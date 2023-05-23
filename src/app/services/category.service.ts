@@ -14,4 +14,8 @@ export class CategoryService {
     return this.httpClient.get<Category[]>('https://localhost:44313/CookingHut/Category');
   }
 
+  getById(id: number): Observable<Category> {
+    return this.httpClient.get<Category>('https://localhost:44313/CookingHut/Category/' + id);
+  }
+
 }

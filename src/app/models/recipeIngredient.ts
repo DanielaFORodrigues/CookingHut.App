@@ -5,6 +5,7 @@ export interface RecipeIngredient {
   id:number,
   recipeId: number,
   ingredientId: number,
+  ingredient: Ingredient,
   quantity:number,
   unit:number,
 }
