@@ -10,6 +10,7 @@ import { ImageUploadService } from 'src/app/services/imageUpload.service';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
+import { EnumTexts } from 'src/app/utils/pipes/enum_texts';
 
 class ImageSnippet {
   savedImageName: string | null = null;
@@ -33,6 +34,8 @@ export class CreateRecipeComponent implements OnInit {
   selectedImageFile: ImageSnippet | null;
 
   form: FormGroup;
+
+  enumTextsUtil: EnumTexts = new EnumTexts();
 
   constructor(
     private formBuilder: FormBuilder,

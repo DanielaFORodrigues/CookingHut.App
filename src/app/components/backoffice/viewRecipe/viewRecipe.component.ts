@@ -10,6 +10,7 @@ import { RecipeIngredientService } from 'src/app/services/recipeIngredient.servi
 import { UserService } from 'src/app/services/user.service';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { EnumTexts } from 'src/app/utils/pipes/enum_texts';
 
 registerLocaleData(localePt);
 
@@ -19,6 +20,8 @@ registerLocaleData(localePt);
   styleUrls: ['./viewRecipe.component.css']
 })
 export class ViewRecipeComponent implements OnInit {
+
+  enumTextsUtil: EnumTexts = new EnumTexts();
 
   recipeUserName!: string;
   recipe!: Recipe | null;

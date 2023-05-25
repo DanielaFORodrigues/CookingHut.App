@@ -62,7 +62,7 @@
               <tbody>
                 <tr>
                   <td>{{ this.category?.name }}</td>
-                  <td>{{ this.recipe?.difficulty }}</td>
+                  <td>{{ this.enumTextsUtil.getDifficultyLevelText( this.recipe?.difficulty) }}</td>
                   <td>{{ this.recipe?.executionTime }}</td>
                   <td> {{ this.recipeUserName }} em <br>
                        {{ this.recipe?.creationDate | date:'d MMMM yyyy':'':'pt' }}</td>
