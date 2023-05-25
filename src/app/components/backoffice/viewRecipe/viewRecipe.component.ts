@@ -8,6 +8,10 @@ import { CategoryService } from 'src/app/services/category.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipeIngredientService } from 'src/app/services/recipeIngredient.service';
 import { UserService } from 'src/app/services/user.service';
+import { DatePipe, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
 
 @Component({
   selector: 'app-viewRecipe',
