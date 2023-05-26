@@ -11,6 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { EnumTexts } from 'src/app/utils/pipes/enum_texts';
+import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
+import { Session } from 'src/app/models/session';
 
 registerLocaleData(localePt);
 
@@ -21,6 +23,7 @@ registerLocaleData(localePt);
 })
 export class ViewRecipeComponent implements OnInit {
 
+
   enumTextsUtil: EnumTexts = new EnumTexts();
 
   recipeUserName!: string;
@@ -30,6 +33,7 @@ export class ViewRecipeComponent implements OnInit {
   recipeDescription!: string[] | null;
 
   constructor(
+    private userContext: UserContextService,
     private recipeService: RecipeService,
     private userService: UserService,
     private categoryService: CategoryService,
@@ -86,6 +90,19 @@ export class ViewRecipeComponent implements OnInit {
     (error: HttpErrorResponse) => {
       this.router.navigate(['home']);
     });
+  }
+
+  isUserLogged() {
+    return this.userContext.isLogged();
+  }
+
+  getCurrentUsername() {
+    return this.userContext.getCurrentSession()?.name;
+  }
+
+  addComment() {
+    const userId = this.userContext.getCurrentSession()?.id;
+
   }
 
 }
