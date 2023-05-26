@@ -96,7 +96,10 @@ th, td{
   background-repeat: no-repeat;
 }
 
-
+.card1 ul {
+  counter-reset: item;
+  list-style-type: none;
+}
 
 
 .table-hover{

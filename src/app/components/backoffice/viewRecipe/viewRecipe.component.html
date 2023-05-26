@@ -123,8 +123,7 @@
                 <div class="card1">
                   <h1>INGREDIENTES</h1>
                   <ul>
-                    <li *ngFor="let recipeIngredient of this.recipeIngredients">{{ recipeIngredient?.ingredient?.name }}
-                    </li>
+                    <li *ngFor="let recipeIngredient of this.recipeIngredients">{{ recipeIngredient?.quantity }} {{ this.enumTextsUtil.getMeasurementUnitText( this.recipeIngredient?.unit) }} {{ recipeIngredient?.ingredient?.name }}</li>
                   </ul>
 
                 </div>
