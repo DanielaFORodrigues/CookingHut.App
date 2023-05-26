@@ -106,9 +106,22 @@ height: 0.2px;
 
 }
 
+thead{
+  color:  rgb(75, 143, 105);
+  }
 
 
+tbody{
+  color: rgb(18, 19, 18);
+  }
 
+#stars{
+  color: rgb(224, 214, 70);
+}
+
+#heart{
+  color: rgb(218, 70, 70);
+}
 
 .card2 {
   text-align: left;
