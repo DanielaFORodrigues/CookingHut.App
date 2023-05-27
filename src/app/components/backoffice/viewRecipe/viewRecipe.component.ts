@@ -38,12 +38,12 @@ export class ViewRecipeComponent implements OnInit {
     private userService: UserService,
     private categoryService: CategoryService,
     private recipeIngredientsService: RecipeIngredientService,
-    private activatedRout: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.activatedRout.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
       const recipeId = params['id'];
 
       if (!recipeId) {

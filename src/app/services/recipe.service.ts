@@ -19,4 +19,8 @@ export class RecipeService {
     return this.httpClient.get<Recipe>('https://localhost:44313/CookingHut/Recipe/' + id);
   }
 
+  getAll(type: string, id: number): Observable<Recipe[]> {
+    return this.httpClient.get<Recipe[]>(`https://localhost:44313/CookingHut/Recipe?type=${type}&id=${id}`);
+  }
+
 }

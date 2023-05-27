@@ -10,6 +10,7 @@ export interface Recipe {
   userId: number,
   creationDate: Date,
   categoryId:number,
-  image: string
+  image: string,
+  isApproved: boolean
 }
 
