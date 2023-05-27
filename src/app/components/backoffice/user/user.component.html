@@ -8,9 +8,9 @@
 <div id="nav-user" class="container">
   <h2 class="text-center">Área de utilizador</h2>
   <ul class="nav nav-tabs">
-    <li [ngClass]="{'active': selectedTab == 1}"><a (click)="selectedTab=1">Publicar Receita</a></li>
-    <li [ngClass]="{'active': selectedTab == 2}"><a (click)="selectedTab=2">Minhas Receitas</a></li>
-    <li [ngClass]="{'active': selectedTab == 3}"><a (click)="selectedTab=3">Receitas Favoritas</a></li>
+    <li [ngClass]="{'active': selectedTab == 1}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 1}">Publicar Receita</a></li>
+    <li [ngClass]="{'active': selectedTab == 2}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 2}">Minhas Receitas</a></li>
+    <li [ngClass]="{'active': selectedTab == 3}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 3}">Receitas Favoritas</a></li>
     <li><a (click)="logout()">Logout</a></li>
   </ul>
 
@@ -22,8 +22,7 @@
     </div>
     <div class="tab-content">
       <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}" >
-        <h3>Minhas Receitas</h3>
-        <p>Lista de Receitas Publicadas</p>
+        <app-listRecipes pageTitle="Minhas Receitas" pageType="owner"></app-listRecipes>
       </div>
 
     <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 3}">

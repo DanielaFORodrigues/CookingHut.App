@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 
 @Component({
@@ -13,10 +13,18 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userContext: UserContextService,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const selectedTab = params['selectedTab'];
+
+      if (selectedTab) {
+        this.selectedTab = selectedTab;
+      }
+    });
   }
 
   logout() {
