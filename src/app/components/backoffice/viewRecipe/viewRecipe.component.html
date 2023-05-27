@@ -11,7 +11,7 @@
         <a href="javascript:void(0)" (click)="this.goBackAction()">Voltar para página anterior</a>
         <ul class="nav nav-tabs">
           <li>
-            <h3>{{ this.recipe?.name }}</h3>
+            <h3>{{ this.recipe?.name }} <span style="color: #d31919;">{{ this.recipe?.isApproved == false ? "(por aprovar)": "" }}</span></h3>
           </li>
         </ul>
         <div class="infoReceita">
