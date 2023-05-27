@@ -19,6 +19,7 @@ export class ListRecipesComponent implements OnInit {
 
   enumTextsUtil: EnumTexts = new EnumTexts();
 
+  categories: Category[] = [];
   recipes!: Recipe[] | null;
   category!: Category | null;
 
@@ -31,6 +32,8 @@ export class ListRecipesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadAllCategories();
+
     if (this.pageType === "category") {
       this.loadCategoryPage();
     }
@@ -38,7 +41,7 @@ export class ListRecipesComponent implements OnInit {
       this.loadOwnRecipes();
     }
     else if(this.pageType === "favourites") {
-      //falta ter metodo aqui
+      //falta ter metodo aqui para carregar favoritos
     }
     else {
       this.router.navigate(['home']);
@@ -74,7 +77,6 @@ export class ListRecipesComponent implements OnInit {
         this.router.navigate(['home']);
       }
 
-
       this.recipeService.getAll("owner", session!.id).subscribe(response => {
         this.recipes = response;
       },
@@ -95,6 +97,16 @@ export class ListRecipesComponent implements OnInit {
     (error: HttpErrorResponse) => {
       this.router.navigate(['home']);
     });
+  }
+
+  loadAllCategories() {
+    this.categoryService.getAll().subscribe(response => {
+      this.categories = response;
+    });
+  }
+
+  getCategoryName(id: number) {
+    return this.categories.find(cat => cat.id == id)?.name;
   }
 
 }

@@ -47,7 +47,7 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>{{ this.category?.name }}</td>
+                          <td>{{ this.getCategoryName(this.recipe!.categoryId) }}</td>
                           <td>{{ this.enumTextsUtil.getDifficultyLevelText( this.recipe?.difficulty) }}</td>
                           <td>{{ this.recipe?.executionTime }}</td>
                           <td> {{ this.recipe?.user?.name }} em <br>
