@@ -43,6 +43,7 @@
     display: flex;
   }
 
+
   li {
 
     list-style-position: inside;
@@ -63,6 +64,7 @@ ul {
   margin: auto;
 
 }
+
 
 th, td{
   padding: 10px;

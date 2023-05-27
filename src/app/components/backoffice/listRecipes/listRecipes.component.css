@@ -24,3 +24,21 @@
     opacity: 80%;
 
   }
+
+  th, td{
+    text-align: center;
+
+    }
+
+    th{
+      font-weight: bold;
+      color:  rgb(75, 143, 105);
+
+      }
+
+    td{
+        color: black;
+        
+        }
+
+
