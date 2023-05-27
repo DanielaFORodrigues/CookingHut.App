@@ -1,3 +1,4 @@
+import { Location } from '@angular/common'
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +13,6 @@ import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { EnumTexts } from 'src/app/utils/pipes/enum_texts';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
-import { Session } from 'src/app/models/session';
 
 registerLocaleData(localePt);
 
@@ -33,6 +33,7 @@ export class ViewRecipeComponent implements OnInit {
   recipeDescription!: string[] | null;
 
   constructor(
+    private location: Location,
     private userContext: UserContextService,
     private recipeService: RecipeService,
     private userService: UserService,
@@ -102,7 +103,10 @@ export class ViewRecipeComponent implements OnInit {
 
   addComment() {
     const userId = this.userContext.getCurrentSession()?.id;
+  }
 
+  goBackAction() {
+    this.location.back();
   }
 
 }
