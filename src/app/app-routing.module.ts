@@ -10,12 +10,14 @@ import { LoginComponent } from './components/backoffice/login/login.component';
 import { UserRegistryComponent } from './components/backoffice/userRegistry/userRegistry.component';
 import { HomePageComponent } from './components/homePage/homePage.component';
 import { ViewRecipeComponent } from './components/backoffice/viewRecipe/viewRecipe.component';
+import { ListRecipesComponent } from './components/backoffice/listRecipes/listRecipes.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'viewRecipe', component: ViewRecipeComponent },
   { path: 'registo', component: UserRegistryComponent },
+  { path: 'listRecipes', component: ListRecipesComponent },
   { path: 'user', canActivate: [CanActivateGuardService], component: UserComponent },
   { path: 'category', canActivate: [CanActivateGuardService], component: CategoryComponent },
   { path: 'ingredient', canActivate: [CanActivateGuardService], component: IngredientComponent },

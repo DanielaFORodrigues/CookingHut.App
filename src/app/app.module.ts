@@ -19,6 +19,7 @@ import { ToastModule } from 'primeng/toast';
 import { UserRegistryComponent } from "./components/backoffice/userRegistry/userRegistry.component";
 import { MessageService } from "primeng/api";
 import { ViewRecipeComponent } from "./components/backoffice/viewRecipe/viewRecipe.component";
+import { ListRecipesComponent } from "./components/backoffice/listRecipes/listRecipes.component";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ViewRecipeComponent } from "./components/backoffice/viewRecipe/viewReci
     RecipeIngredientComponent,
     UserRegistryComponent,
     ViewRecipeComponent,
+    ListRecipesComponent,
     UserComponent,
   ],
   imports: [
