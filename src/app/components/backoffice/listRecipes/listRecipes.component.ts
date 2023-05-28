@@ -41,7 +41,7 @@ export class ListRecipesComponent implements OnInit {
       this.loadOwnRecipes();
     }
     else if(this.pageType === "favourites") {
-      //falta ter metodo aqui para carregar favoritos
+      this.loadFavouriteRecipes();
     }
     else {
       this.router.navigate(['home']);
@@ -78,6 +78,23 @@ export class ListRecipesComponent implements OnInit {
       }
 
       this.recipeService.getAll("owner", session!.id).subscribe(response => {
+        this.recipes = response;
+      },
+      (error: HttpErrorResponse) => {
+        this.router.navigate(['home']);
+      });
+    });
+  }
+
+  loadFavouriteRecipes() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const session = this.userContext.getCurrentSession();
+
+      if (session == null) {
+        this.router.navigate(['home']);
+      }
+
+      this.recipeService.getAll("favourites", session!.id).subscribe(response => {
         this.recipes = response;
       },
       (error: HttpErrorResponse) => {
