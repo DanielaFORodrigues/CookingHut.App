@@ -14,6 +14,11 @@ export class UserFavouriteRecipesService {
     private userContext: UserContextService) {}
 
   private getCurrentUserId(): number {
+    const userSession = this.userContext.getCurrentSession();
+    if (!userSession) {
+      return 0;
+    }
+
     return this.userContext.getCurrentSession()!.id;
   }
 

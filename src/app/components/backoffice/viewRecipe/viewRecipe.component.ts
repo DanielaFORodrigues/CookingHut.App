@@ -114,6 +114,10 @@ export class ViewRecipeComponent implements OnInit {
   }
 
   getCurrentUsername() {
+    if (!this.userContext.isLogged()) {
+      return "";
+    }
+
     return this.userContext.getCurrentSession()?.name;
   }
 
@@ -163,6 +167,10 @@ export class ViewRecipeComponent implements OnInit {
   }
 
   isFavourite(recipeId: number) {
+    if (!this.isUserLogged()) {
+      this.isFavouriteRecipe = false;
+    }
+
     this.userFavouriteRecipesService.isFavouriteRecipe(recipeId).subscribe(response => {
       this.isFavouriteRecipe = true;
     }),
