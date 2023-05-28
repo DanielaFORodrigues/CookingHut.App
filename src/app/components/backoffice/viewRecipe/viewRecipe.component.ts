@@ -13,6 +13,8 @@ import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { EnumTexts } from 'src/app/utils/pipes/enum_texts';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RecipeComment } from 'src/app/models/recipeComment';
 
 registerLocaleData(localePt);
 
@@ -23,6 +25,11 @@ registerLocaleData(localePt);
 })
 export class ViewRecipeComponent implements OnInit {
 
+  comment!: any;
+
+  form = new FormGroup({
+    comment: new FormControl('',[Validators.required])
+  });
 
   enumTextsUtil: EnumTexts = new EnumTexts();
 
@@ -31,6 +38,7 @@ export class ViewRecipeComponent implements OnInit {
   category!: Category | null;
   recipeIngredients!: RecipeIngredient[] | null;
   recipeDescription!: string[] | null;
+  comments: RecipeComment[] = [];
 
   constructor(
     private location: Location,
@@ -57,6 +65,7 @@ export class ViewRecipeComponent implements OnInit {
         this.getRecipeUserName(response.userId);
         this.getCategory(response.categoryId);
         this.getRecipeIngredients(response.id);
+        this.loadAllRecipeComments(response.id);
 
         this.recipeDescription = this.recipe.description.split(/\r?\n/);
       },
@@ -101,8 +110,32 @@ export class ViewRecipeComponent implements OnInit {
     return this.userContext.getCurrentSession()?.name;
   }
 
+  loadAllRecipeComments(recipeId: number) {
+    this.recipeService.getAllComments(recipeId).subscribe(response => {
+      this.comments = response;
+    });
+  }
+
+  hasComments() {
+    if (!this.comments) {
+      return false;
+    }
+
+    return this.comments.length > 0;
+  }
+
   addComment() {
     const userId = this.userContext.getCurrentSession()?.id;
+
+    this.comment = this.form.value;
+    this.comment.userId = userId!;
+    this.comment.recipeId = this.recipe!.id;
+
+
+    this.recipeService.createComment(this.comment).subscribe(response => {
+      alert("Comentário Publicado Com Sucesso!");
+      window.location.reload();
+    });
   }
 
   goBackAction() {
