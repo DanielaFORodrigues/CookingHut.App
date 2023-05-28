@@ -29,6 +29,6 @@ export class RecipeService {
   }
 
   getAllComments(recipeId: number): Observable<RecipeComment[]> {
-    return this.httpClient.get<RecipeComment[]>(`https://localhost:44313/CookingHut/RecipeComments?recipeId=${recipeId}`);
+    return this.httpClient.get<RecipeComment[]>(`https://localhost:44313/CookingHut/RecipeComments/${recipeId}`);
   }
 }

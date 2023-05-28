@@ -59,13 +59,15 @@ export class ViewRecipeComponent implements OnInit {
         this.router.navigate(['home']);
       }
 
+      this.loadAllRecipeComments(recipeId);
+
       this.recipeService.getById(recipeId).subscribe(response => {
         this.recipe = response;
 
         this.getRecipeUserName(response.userId);
         this.getCategory(response.categoryId);
         this.getRecipeIngredients(response.id);
-        this.loadAllRecipeComments(response.id);
+
 
         this.recipeDescription = this.recipe.description.split(/\r?\n/);
       },
