@@ -117,7 +117,7 @@ export class ListRecipesComponent implements OnInit {
     this.pageType = "search";
     this.pageTitle = `Resultados Pesquisa de Receitas por '${searchText}'`
 
-    this.recipeService.getAll("search", 0).subscribe(response => {
+    this.recipeService.search(searchText).subscribe(response => {
       this.recipes = response;
     },
     (error: HttpErrorResponse) => {

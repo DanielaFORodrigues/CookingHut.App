@@ -24,6 +24,10 @@ export class RecipeService {
     return this.httpClient.get<Recipe[]>(`https://localhost:44313/CookingHut/Recipe?type=${type}&id=${id}`);
   }
 
+  search(searchText: string): Observable<Recipe[]> {
+    return this.httpClient.get<Recipe[]>(`https://localhost:44313/CookingHut/Recipe?type=search&searchText=${searchText}`);
+  }
+
   createComment(recipeComment: RecipeComment): Observable<RecipeComment> {
     return this.httpClient.post<RecipeComment>('https://localhost:44313/CookingHut/RecipeComments', recipeComment);
   }
