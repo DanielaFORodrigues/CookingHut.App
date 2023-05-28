@@ -15,6 +15,7 @@ import { EnumTexts } from 'src/app/utils/pipes/enum_texts';
 import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecipeComment } from 'src/app/models/recipeComment';
+import { UserFavouriteRecipesService } from 'src/app/services/userFavouriteRecipes.service';
 
 registerLocaleData(localePt);
 
@@ -40,6 +41,8 @@ export class ViewRecipeComponent implements OnInit {
   recipeDescription!: string[] | null;
   comments: RecipeComment[] = [];
 
+  isFavouriteRecipe: boolean = false;
+
   constructor(
     private location: Location,
     private userContext: UserContextService,
@@ -47,6 +50,7 @@ export class ViewRecipeComponent implements OnInit {
     private userService: UserService,
     private categoryService: CategoryService,
     private recipeIngredientsService: RecipeIngredientService,
+    private userFavouriteRecipesService: UserFavouriteRecipesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
@@ -60,6 +64,7 @@ export class ViewRecipeComponent implements OnInit {
       }
 
       this.loadAllRecipeComments(recipeId);
+      this.isFavourite(recipeId);
 
       this.recipeService.getById(recipeId).subscribe(response => {
         this.recipe = response;
@@ -133,7 +138,6 @@ export class ViewRecipeComponent implements OnInit {
     this.comment.userId = userId!;
     this.comment.recipeId = this.recipe!.id;
 
-
     this.recipeService.createComment(this.comment).subscribe(response => {
       alert("Comentário Publicado Com Sucesso!");
       window.location.reload();
@@ -142,6 +146,29 @@ export class ViewRecipeComponent implements OnInit {
 
   goBackAction() {
     this.location.back();
+  }
+
+  addToFavourites(recipeId: number) {
+    this.userFavouriteRecipesService.addRecipeToFavourite(recipeId).subscribe(response => {
+      alert("Receita adicionada aos favoritos");
+      window.location.reload();
+    });
+  }
+
+  removeFromFavourites(recipeId: number) {
+    this.userFavouriteRecipesService.removeRecipeFromFavourites(recipeId).subscribe(response => {
+      alert("Receita removida dos favoritos");
+      window.location.reload();
+    });
+  }
+
+  isFavourite(recipeId: number) {
+    this.userFavouriteRecipesService.isFavouriteRecipe(recipeId).subscribe(response => {
+      this.isFavouriteRecipe = true;
+    }),
+    (error: HttpErrorResponse) => {
+      this.isFavouriteRecipe = false;
+    };
   }
 
 }
