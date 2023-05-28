@@ -35,7 +35,25 @@ export class ListRecipesComponent implements OnInit {
     this.loadAllCategories();
 
     if (this.pageType === "category") {
-      this.loadCategoryPage();
+      this.activatedRoute.queryParams.subscribe(params => {
+        const categoryId = params['categoryId'];
+
+        if (!categoryId) {
+          const searchText = params['searchText'];
+
+          if (!searchText) {
+            this.router.navigate(['home']);
+          }
+          else {
+            this.loadRecipesSearch(searchText);
+          }
+
+          return;
+        }
+        else {
+          this.loadCategoryPage(categoryId);
+        }
+      });
     }
     else if(this.pageType === "owner") {
       this.loadOwnRecipes();
@@ -48,24 +66,16 @@ export class ListRecipesComponent implements OnInit {
     }
   }
 
-  loadCategoryPage() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const categoryId = params['categoryId'];
+  loadCategoryPage(categoryId: number) {
+    this.getCategory(categoryId);
 
-      if (!categoryId) {
-        this.router.navigate(['home']);
-      }
+    this.recipeService.getAll("category", categoryId).subscribe(response => {
+      this.recipes = response;
 
-      this.getCategory(categoryId);
-
-      this.recipeService.getAll("category", categoryId).subscribe(response => {
-        this.recipes = response;
-
-        this.pageTitle = `Receitas de ${this.category!.name}`
-      },
-      (error: HttpErrorResponse) => {
-        this.router.navigate(['home']);
-      });
+      this.pageTitle = `Receitas de ${this.category!.name}`
+    },
+    (error: HttpErrorResponse) => {
+      this.router.navigate(['home']);
     });
   }
 
@@ -100,6 +110,18 @@ export class ListRecipesComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.router.navigate(['home']);
       });
+    });
+  }
+
+  loadRecipesSearch(searchText: string) {
+    this.pageType = "search";
+    this.pageTitle = `Resultados Pesquisa de Receitas por '${searchText}'`
+
+    this.recipeService.getAll("search", 0).subscribe(response => {
+      this.recipes = response;
+    },
+    (error: HttpErrorResponse) => {
+      this.router.navigate(['home']);
     });
   }
 

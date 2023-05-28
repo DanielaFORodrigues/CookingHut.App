@@ -3,6 +3,7 @@ import { UserContextService } from '../utils/contexts/usercontext.service';
 import { Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,10 @@ export class AppComponent {
   title = 'CookingHutApp';
 
   categories: Category[] = [];
+
+  form = new FormGroup({
+    searchText: new FormControl('',[Validators.required])
+  });
 
   constructor(
     private userContext: UserContextService,
@@ -37,5 +42,12 @@ export class AppComponent {
 
   getUserNameToDisplay() {
     return this.userContext.getCurrentSession()?.name;
+  }
+
+  searchRecipes() {
+    this.router.navigate(
+      ['/listRecipes'],
+      { queryParams: { searchText: this.form.value.searchText } }
+    );
   }
 }
