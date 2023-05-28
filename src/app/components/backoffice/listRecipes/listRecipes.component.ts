@@ -126,4 +126,19 @@ export class ListRecipesComponent implements OnInit {
     return this.categories.find(cat => cat.id == id)?.name;
   }
 
+  getNoRecipesMessage() {
+    if (this.pageType === "category") {
+      return "Não tem receitas para a categoria selecionada";
+    }
+    else if(this.pageType === "owner") {
+      return "Ainda não tem receitas criadas";
+    }
+    else if(this.pageType === "favourites") {
+      return "Ainda não tem receitas favoritas";
+    }
+    else {
+      return "Não foram encontradas receitas para a sua pesquisa";
+    }
+  }
+
 }
