@@ -57,6 +57,9 @@ ul {
 
 
 
+
+
+
 .card0 {
   color:  rgb(75, 143, 105);
   text-align: left;
@@ -107,6 +110,7 @@ th, td{
 .table-hover{
 width: 1100px;
 height: 0.2px;
+color: #ca3a3a;
 
 
 }
@@ -126,6 +130,8 @@ tbody{
 
 #heart{
   color: rgb(218, 70, 70);
+
+
 }
 
 .card2 {
