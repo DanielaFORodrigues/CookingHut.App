@@ -23,9 +23,10 @@ export class EnumTexts {
       case 6: return "Chávena de Chá";
       case 7: return "Colher de Café";
       case 8: return "Colher de Chá";
-      case 9: return "Unidade(s)";
-      case 10: return "Lata(s)";
-      case 11:
+      case 9: return "Colher de Sopa";
+      case 10: return "Unidade(s)";
+      case 11: return "Lata(s)";
+      case 12:
       default:
         return "Pacote(s)";
     }
