@@ -187,7 +187,12 @@ export class ViewRecipeComponent implements OnInit {
   }
 
   rateRecipe(value: number) {
-    alert("votou " + value);
+    if (!this.isUserLogged()) {
+      this.router.navigate(['login']);
+    }
+    else {
+      alert("votou " + value);
+    }
   }
 
 }
