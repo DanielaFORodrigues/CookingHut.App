@@ -186,4 +186,8 @@ export class ViewRecipeComponent implements OnInit {
     return value <= this.rating;
   }
 
+  rateRecipe(value: number) {
+    alert("votou " + value);
+  }
+
 }
