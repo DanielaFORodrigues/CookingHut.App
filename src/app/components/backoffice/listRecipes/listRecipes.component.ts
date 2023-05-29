@@ -150,16 +150,16 @@ export class ListRecipesComponent implements OnInit {
 
   getNoRecipesMessage() {
     if (this.pageType === "category") {
-      return "Não tem receitas para a categoria selecionada";
+      return "Ainda Não Existem Receitas Para a Categoria Selecionada.";
     }
     else if(this.pageType === "owner") {
-      return "Ainda não tem receitas criadas";
+      return "Ainda Não Tem Receitas Criadas";
     }
     else if(this.pageType === "favourites") {
-      return "Ainda não tem receitas favoritas";
+      return "Ainda Não Tem Receitas Favoritas";
     }
     else {
-      return "Não foram encontradas receitas para a sua pesquisa";
+      return "Não Foram Encontradas Receitas Para a Sua Pesquisa";
     }
   }
 

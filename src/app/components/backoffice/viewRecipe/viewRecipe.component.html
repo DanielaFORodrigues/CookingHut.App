@@ -158,17 +158,15 @@
                         <h3>Comentar Esta Receita</h3>
                       </li>
                     </ul>
+
                     <div class="comments">
-
-
-
                       <div class="card4">
                         <form [formGroup]="form" (ngSubmit)="addComment()">
                         <div class="form-group form-margin ">
                           <div class="input-group">
-                        <ul id="comments">
-                          <li>
-                      <li>
+                      <ul id="comments">
+
+                       <li>
                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="30" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                           <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
                         </svg>
@@ -180,7 +178,7 @@
                         </svg>
 
                           Utilizador {{ this.getCurrentUsername() }}
-                      <li>
+                      </li>
 
                        <li> <textarea formControlName="comment" class="form-control"
                             style="width: 600px; font: size 12px; height: 180px; border-color:lightgray;" placeholder="Deixe Aqui o Seu Comentário..."></textarea>
@@ -192,9 +190,8 @@
                   </form>
                </div>
             </div>
-
-
           </div>
+
 
 
                <div class="container-fluid bg-3 text-center" *ngIf="hasComments()">
@@ -209,9 +206,9 @@
                       <div class="card5">
                         <div class="form-group form-margin ">
                           <div class="input-group">
+
                         <ul id="comments" *ngFor="let comment of this.comments">
                           <li>
-
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="30" fill="currentColor" class="bi bi-chat-square-quote" viewBox="0 0 16 16">
                               <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                               <path d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
@@ -238,11 +235,10 @@
                                 style="width: 600px; font: size 12px; height: 180px; border-color:lightgray;" readonly>{{ this.comment?.comment }}</textarea>
                           </li>
                         </ul>
-                          </div>
-                    </div>
+                        
+                     </div>
+                   </div>
                 </div>
               </div>
-              </div>
-              </div>
 
-               </div>
+

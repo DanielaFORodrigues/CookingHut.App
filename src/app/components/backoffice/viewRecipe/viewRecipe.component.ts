@@ -154,14 +154,14 @@ export class ViewRecipeComponent implements OnInit {
 
   addToFavourites(recipeId: number) {
     this.userFavouriteRecipesService.addRecipeToFavourite(recipeId).subscribe(response => {
-      alert("Receita adicionada aos favoritos");
+      alert("Receita Adicionada aos Favoritos");
       window.location.reload();
     });
   }
 
   removeFromFavourites(recipeId: number) {
     this.userFavouriteRecipesService.removeRecipeFromFavourites(recipeId).subscribe(response => {
-      alert("Receita removida dos favoritos");
+      alert("Receita Removida dos Favoritos");
       window.location.reload();
     });
   }
