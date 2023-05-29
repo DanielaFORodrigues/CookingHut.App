@@ -26,6 +26,7 @@ registerLocaleData(localePt);
 })
 export class ViewRecipeComponent implements OnInit {
 
+  rating: number = 5;
   comment!: any;
 
   form = new FormGroup({
@@ -177,6 +178,10 @@ export class ViewRecipeComponent implements OnInit {
     (error: HttpErrorResponse) => {
       this.isFavouriteRecipe = false;
     };
+  }
+
+  hasRating(value: number) {
+    return value <= this.rating;
   }
 
 }
