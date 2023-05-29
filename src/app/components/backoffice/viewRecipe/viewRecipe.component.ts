@@ -26,7 +26,9 @@ registerLocaleData(localePt);
 })
 export class ViewRecipeComponent implements OnInit {
 
-  rating: number = 5;
+  rating: number = 3.5;
+  numRatings: number = 10;
+
   comment!: any;
 
   form = new FormGroup({
