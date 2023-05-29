@@ -16,6 +16,7 @@ import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecipeComment } from 'src/app/models/recipeComment';
 import { UserFavouriteRecipesService } from 'src/app/services/userFavouriteRecipes.service';
+import { RatingService } from 'src/app/services/rating.service';
 
 registerLocaleData(localePt);
 
@@ -55,6 +56,7 @@ export class ViewRecipeComponent implements OnInit {
     private categoryService: CategoryService,
     private recipeIngredientsService: RecipeIngredientService,
     private userFavouriteRecipesService: UserFavouriteRecipesService,
+    private ratingService: RatingService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
@@ -69,6 +71,7 @@ export class ViewRecipeComponent implements OnInit {
 
       this.loadAllRecipeComments(recipeId);
       this.isFavourite(recipeId);
+      this.loadRatingInfo(recipeId);
 
       this.recipeService.getById(recipeId).subscribe(response => {
         this.recipe = response;
@@ -183,6 +186,23 @@ export class ViewRecipeComponent implements OnInit {
     };
   }
 
+  loadRatingInfo(recipeId: number) {
+    this.ratingService.getUserRating(recipeId).subscribe(response => {
+      this.alreadyRated = true;
+    }),
+    (error: HttpErrorResponse) => {
+      this.alreadyRated = false;
+    };
+
+    this.ratingService.getRecipeRatings(recipeId).subscribe(response => {
+      const ratingsList = response;
+
+      this.numRatings = ratingsList.length;
+      this.rating = ratingsList.map((x) => x.ratingValue).reduce((a, b) => a + b, 0) / this.numRatings;
+    });
+
+  }
+
   hasRating(value: number) {
     return value <= this.rating;
   }
@@ -195,7 +215,10 @@ export class ViewRecipeComponent implements OnInit {
       alert("Já Avaliou Esta Receita Anteriormente");
     }
     else {
-      alert("vai votar " + value);
+      this.ratingService.rateRecipe(this.recipe!.id, value).subscribe(response => {
+        alert("Receita Avaliada com Sucesso");
+        window.location.reload();
+      });
     }
   }
 
