@@ -26,8 +26,9 @@ registerLocaleData(localePt);
 })
 export class ViewRecipeComponent implements OnInit {
 
-  rating: number = 3.5;
-  numRatings: number = 10;
+  rating: number = 0;
+  numRatings: number = 0;
+  alreadyRated: boolean = false;
 
   comment!: any;
 
@@ -190,8 +191,11 @@ export class ViewRecipeComponent implements OnInit {
     if (!this.isUserLogged()) {
       this.router.navigate(['login']);
     }
+    else if (this.alreadyRated) {
+      alert("Já Avaliou Esta Receita Anteriormente");
+    }
     else {
-      alert("votou " + value);
+      alert("vai votar " + value);
     }
   }
 
