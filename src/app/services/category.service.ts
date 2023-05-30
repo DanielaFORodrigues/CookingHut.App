@@ -18,4 +18,8 @@ export class CategoryService {
     return this.httpClient.get<Category>('https://localhost:44313/CookingHut/Category/' + id);
   }
 
+  create(newCategory: Category): Observable<Category> {
+    return this.httpClient.post<Category>('https://localhost:44313/CookingHut/Category', newCategory);
+  }
+
 }
