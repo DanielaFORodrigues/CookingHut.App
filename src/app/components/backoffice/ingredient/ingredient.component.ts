@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Ingredient } from 'src/app/models/ingredient';
+import { IngredientService } from 'src/app/services/ingredient.service';
 
 @Component({
   selector: 'app-ingredient',
@@ -7,9 +11,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredientComponent implements OnInit {
 
-  constructor() { }
+  ingredient!: any;
+  ingredients: Ingredient[] = [];
+
+  form = new FormGroup({
+    name: new FormControl('',[Validators.required])
+  });
+
+  constructor(
+    private ingredientService: IngredientService
+  ) { }
 
   ngOnInit() {
+    this.loadAllIngredients();
+  }
+
+  loadAllIngredients() {
+    this.ingredientService.getAll().subscribe(response => {
+      this.ingredients = response;
+    });
+  }
+
+  createIngredient() {
+    this.ingredient = this.form.value;
+
+    if (this.checkIngredientExists(this.ingredient!.name) == false) {
+      this.ingredientService.create(this.ingredient).subscribe(response => {
+        alert("Ingrediente Criado Com Sucesso!");
+        window.location.reload();
+      },
+      (error: HttpErrorResponse) => {
+        alert("Não Foi Possível Efectuar a Operação!");
+      });
+    }
+    else {
+      alert("O Ingrediente Já Existe!");
+    }
+  }
+
+  checkIngredientExists(ingredientToFind: string): boolean {
+    const ingredientIndex = this.ingredients.findIndex(u => u.name.toLowerCase() == ingredientToFind.toLowerCase());
+
+      if (ingredientIndex > -1) {
+        return true;
+      }
+
+    return false;
   }
 
 }

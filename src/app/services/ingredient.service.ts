@@ -14,4 +14,8 @@ export class IngredientService {
     return this.httpClient.get<Ingredient[]>('https://localhost:44313/CookingHut/Ingredient');
   }
 
+  create(newIngredient: Ingredient): Observable<Ingredient> {
+    return this.httpClient.post<Ingredient>('https://localhost:44313/CookingHut/Ingredient', newIngredient);
+  }
+
 }
