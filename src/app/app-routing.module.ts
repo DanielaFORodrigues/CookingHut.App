@@ -8,9 +8,10 @@ import { RatingComponent } from './components/backoffice/rating/rating.component
 import { RecipeIngredientComponent } from './components/backoffice/recipeIngredient/recipeIngredient.component';
 import { LoginComponent } from './components/backoffice/login/login.component';
 import { UserRegistryComponent } from './components/backoffice/userRegistry/userRegistry.component';
-import { HomePageComponent } from './components/backoffice/homePage/homePage.component';
+
 import { ViewRecipeComponent } from './components/backoffice/viewRecipe/viewRecipe.component';
 import { ListRecipesComponent } from './components/backoffice/listRecipes/listRecipes.component';
+import { HomePageComponent } from './components/homePage/homePage.component';
 
 
 const routes: Routes = [
