@@ -80,36 +80,32 @@ export class ListRecipesComponent implements OnInit {
   }
 
   loadOwnRecipes() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const session = this.userContext.getCurrentSession();
+    const session = this.userContext.getCurrentSession();
 
-      if (session == null) {
-        this.router.navigate(['home']);
-      }
+    if (session == null) {
+      this.router.navigate(['home']);
+    }
 
-      this.recipeService.getAll("owner", session!.id).subscribe(response => {
-        this.recipes = response;
-      },
-      (error: HttpErrorResponse) => {
-        this.router.navigate(['home']);
-      });
+    this.recipeService.getAll("owner", session!.id).subscribe(response => {
+      this.recipes = response;
+    },
+    (error: HttpErrorResponse) => {
+      this.router.navigate(['home']);
     });
   }
 
   loadFavouriteRecipes() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const session = this.userContext.getCurrentSession();
+    const session = this.userContext.getCurrentSession();
 
-      if (session == null) {
-        this.router.navigate(['home']);
-      }
+    if (session == null) {
+      this.router.navigate(['home']);
+    }
 
-      this.recipeService.getAll("favourites", session!.id).subscribe(response => {
-        this.recipes = response;
-      },
-      (error: HttpErrorResponse) => {
-        this.router.navigate(['home']);
-      });
+    this.recipeService.getAll("favourites", session!.id).subscribe(response => {
+      this.recipes = response;
+    },
+    (error: HttpErrorResponse) => {
+      this.router.navigate(['home']);
     });
   }
 
