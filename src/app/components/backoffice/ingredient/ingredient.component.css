@@ -1,5 +1,70 @@
+
+.container{
+  position: relative;
+  bottom: 20;
+  left: 30;
+  right: 35;
+  padding-bottom: 20px;
+
+  }
+
+
+.container-fluid {
+  padding-top: 0px;
+  padding-bottom: 70px;
+
+  }
+
+
+  .bg-3 {
+    background-color: #ffffff;
+    color: black;
+    opacity: 80%;
+
+  }
+
+  h3{
+
+    color:  rgb(75, 143, 105);
+  }
+
+  h4{
+
+    color:  rgb(75, 143, 105);
+  }
+
 .form-margin {
 
   padding: 0.5rem;
 
 }
+
+#ingredientForm{
+  max-width: 350px;
+  line-height: 30px;
+
+ }
+
+ th, td{
+  text-align: center;
+
+  }
+
+  th{
+    font-weight: bold;
+    color:  rgb(75, 143, 105);
+
+    }
+
+  td{
+      color: black;
+
+      }
+
+
+ button{
+
+  margin: 0.4rem;
+  display: inline-block;
+
+ }
