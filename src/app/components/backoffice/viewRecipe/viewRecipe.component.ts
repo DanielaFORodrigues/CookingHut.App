@@ -152,6 +152,9 @@ export class ViewRecipeComponent implements OnInit {
     this.recipeService.createComment(this.comment).subscribe(response => {
       alert("Comentário Publicado Com Sucesso!");
       window.location.reload();
+    },
+    (error: HttpErrorResponse) => {
+      alert("Não Foi Possível Efectuar a Operação!");
     });
   }
 
@@ -163,6 +166,9 @@ export class ViewRecipeComponent implements OnInit {
     this.userFavouriteRecipesService.addRecipeToFavourite(recipeId).subscribe(response => {
       alert("Receita Adicionada aos Favoritos");
       window.location.reload();
+    },
+    (error: HttpErrorResponse) => {
+      alert("Não Foi Possível Efectuar a Operação!");
     });
   }
 
@@ -170,6 +176,9 @@ export class ViewRecipeComponent implements OnInit {
     this.userFavouriteRecipesService.removeRecipeFromFavourites(recipeId).subscribe(response => {
       alert("Receita Removida dos Favoritos");
       window.location.reload();
+    },
+    (error: HttpErrorResponse) => {
+      alert("Não Foi Possível Efectuar a Operação!");
     });
   }
 
@@ -218,6 +227,9 @@ export class ViewRecipeComponent implements OnInit {
       this.ratingService.rateRecipe(this.recipe!.id, value).subscribe(response => {
         alert("Receita Avaliada com Sucesso");
         window.location.reload();
+      },
+      (error: HttpErrorResponse) => {
+        alert("Não Foi Possível Efectuar a Operação!");
       });
     }
   }

@@ -35,7 +35,7 @@ export class ApproveRecipesComponent implements OnInit {
 
     const session = this.userContext.getCurrentSession();
 
-    if (session == null) {
+    if (session == null || session.isAdministrator == false) {
       this.router.navigate(['home']);
     }
 
@@ -61,6 +61,9 @@ export class ApproveRecipesComponent implements OnInit {
     this.recipeService.delete(recipeId).subscribe(response => {
       alert("Receita Eliminada Com Sucesso!");
       window.location.reload();
+    },
+    (error: HttpErrorResponse) => {
+      alert("Não Foi Possível Efectuar a Operação!");
     });
   }
 
@@ -68,6 +71,9 @@ export class ApproveRecipesComponent implements OnInit {
     this.recipeService.approve(recipeId).subscribe(response => {
       alert("Receita Aprovada Com Sucesso!");
       window.location.reload();
+    },
+    (error: HttpErrorResponse) => {
+      alert("Não Foi Possível Efectuar a Operação!");
     });
   }
 

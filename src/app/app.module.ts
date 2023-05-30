@@ -9,7 +9,6 @@ import { AppComponent } from "./app-component/app.component";
 import { CategoryComponent } from "./components/backoffice/category/category.component";
 import { IngredientComponent } from "./components/backoffice/ingredient/ingredient.component";
 import { LoginComponent } from "./components/backoffice/login/login.component";
-import { RatingComponent } from "./components/backoffice/rating/rating.component";
 import { CreateRecipeComponent } from "./components/backoffice/createRecipe/createRecipe.component";
 import { RecipeIngredientComponent } from "./components/backoffice/recipeIngredient/recipeIngredient.component";
 import { UserComponent } from "./components/backoffice/user/user.component";
@@ -30,7 +29,6 @@ import { UserManagementComponent } from "./components/backoffice/userManagement/
     CategoryComponent,
     IngredientComponent,
     LoginComponent,
-    RatingComponent,
     CreateRecipeComponent,
     RecipeIngredientComponent,
     UserRegistryComponent,
