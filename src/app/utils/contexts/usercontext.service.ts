@@ -21,6 +21,7 @@ export class UserContextService {
       id: user.id,
       name: user.name,
       email: user.email,
+      isAdministrator: user.isAdministrator
     };
 
     window.localStorage.setItem(this.userSessionStoreField, JSON.stringify(session));
@@ -40,5 +41,16 @@ export class UserContextService {
   isLogged()
   {
     return this.getCurrentSession() !== null;
+  }
+
+  isAdministrator()
+  {
+    const session = this.getCurrentSession();
+
+    if (session !== null) {
+      return session.isAdministrator;
+    }
+
+    return false;
   }
 }

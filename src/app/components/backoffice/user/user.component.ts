@@ -9,6 +9,7 @@ import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 })
 export class UserComponent implements OnInit {
 
+  isAdministrator = false;
   selectedTab = 1;
 
   constructor(
@@ -25,6 +26,8 @@ export class UserComponent implements OnInit {
         this.selectedTab = selectedTab;
       }
     });
+
+    this.isAdministrator = this.userContext.isAdministrator();
   }
 
   logout() {
