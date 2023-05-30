@@ -11,14 +11,16 @@
 
 }
 
+
+
 .active{
-  background-color: rgb(145, 196, 145);
-  border: rgb(145, 196, 145);
+  background-color: rgb(128, 185, 149);
+  border: rgb(128, 185, 149);
 }
 
 .container-fluid{
-  background-color:  rgb(145, 196, 145);
-  border:  rgb(145, 196, 145);
+  background-color: rgb(128, 185, 149);
+  border: rgb(128, 185, 149);
 
 }
 
@@ -29,7 +31,6 @@ html, body {
 }
 
 body {
-
   padding: 0;
   margin: 0;
 }

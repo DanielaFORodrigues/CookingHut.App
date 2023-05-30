@@ -27,8 +27,19 @@
   }
 
 
+  h2{
+    color:  rgb(75, 143, 105);
+  }
+
+
+  h4{
+    color:  rgb(143, 190, 164);
+  }
+
+
+
 .bg-2 {
-  background-color: rgb(145, 196, 145);
+  background-color: rgb(128, 185, 149);
   color: #ffffff;
   opacity: 80%;
 }
