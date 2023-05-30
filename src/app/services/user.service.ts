@@ -33,6 +33,10 @@ export class UserService {
     return this.httpClient.put<User>('https://localhost:44313/CookingHut/User', user);
   }
 
+  block(userId: number, shouldBlock: boolean): Observable<User> {
+    return this.httpClient.put<User>(`https://localhost:44313/CookingHut/User/${userId}/${shouldBlock}`, null);
+  }
+
   delete(id: number) {
     return this.httpClient.delete('https://localhost:44313/CookingHut/User/' + id);
   }

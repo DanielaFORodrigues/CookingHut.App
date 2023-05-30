@@ -11,7 +11,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Nome Utilizador</th>
+              <th>Nome</th>
               <th>Email</th>
               <th>Pais</th>
               <th>Estado</th>
@@ -19,12 +19,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Nome Utilizador</td>
-              <td>Email</td>
-              <td>Pais</td>
-              <td>Activo</td>
-              <td><button id="btnAproveRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">Bloquear</button>
+            <tr *ngFor="let user of this.users">
+              <td>{{ user?.name }} {{ user?.surname }}</td>
+              <td>{{ user?.email }}</td>
+              <td>{{ user?.country }}</td>
+              <td>{{ user?.isBlocked ? "Bloqueado" : "Activo" }}</td>
+              <td><button (click)="blockOrUnblock(user!.id)" id="btnAproveRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">{{ user?.isBlocked ? "Desbloquear" : "Bloquear" }}</button>
               </td>
             </tr>
           </tbody>
