@@ -20,6 +20,8 @@ import { UserRegistryComponent } from "./components/backoffice/userRegistry/user
 import { MessageService } from "primeng/api";
 import { ViewRecipeComponent } from "./components/backoffice/viewRecipe/viewRecipe.component";
 import { ListRecipesComponent } from "./components/backoffice/listRecipes/listRecipes.component";
+import { ApproveRecipesComponent } from "./components/backoffice/approveRecipes/approveRecipes.component";
+import { UserManagementComponent } from "./components/backoffice/userManagement/userManagement.component";
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { ListRecipesComponent } from "./components/backoffice/listRecipes/listRe
     ViewRecipeComponent,
     ListRecipesComponent,
     UserComponent,
+    ApproveRecipesComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,

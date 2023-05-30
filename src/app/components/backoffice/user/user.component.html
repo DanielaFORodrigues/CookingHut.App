@@ -6,27 +6,58 @@
 
 
 <div id="nav-user" class="container">
-  <h2 class="text-center">Área de utilizador</h2>
+  <h2 class="text-center">Área de Utilizador</h2>
+  <h2 class="text-center">Área de Administrador</h2>
   <ul class="nav nav-tabs">
     <li [ngClass]="{'active': selectedTab == 1}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 1}">Publicar Receita</a></li>
     <li [ngClass]="{'active': selectedTab == 2}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 2}">Minhas Receitas</a></li>
     <li [ngClass]="{'active': selectedTab == 3}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 3}">Receitas Favoritas</a></li>
+    <li [ngClass]="{'active': selectedTab == 4}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 4}">Aprovar Receitas</a></li>
+    <li [ngClass]="{'active': selectedTab == 5}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 5}">Gerir Utilizadores</a></li>
+    <li [ngClass]="{'active': selectedTab == 6}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 6}">Criar Categorias</a></li>
+    <li [ngClass]="{'active': selectedTab == 7}"><a [routerLink]="['/user']" [queryParams]="{selectedTab: 7}">Criar Ingredientes</a></li>
     <li><a (click)="logout()">Logout</a></li>
   </ul>
 
 
   <div class="tab-content">
-    <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 1}" >
-      <h3>Publicar Nova Receita</h3>
+    <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 1}">
       <app-createRecipe></app-createRecipe>
     </div>
+
     <div class="tab-content">
-      <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}" >
+      <div id="tabCreateRecipe" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 2}">
         <app-listRecipes pageTitle="Minhas Receitas" pageType="owner"></app-listRecipes>
       </div>
 
-    <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 3}">
-      <app-listRecipes pageTitle="Receitas Favoritas" pageType="favourites"></app-listRecipes>
+      <div class="tab-content">
+        <div id="tabFavouriteRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 3}">
+          <app-listRecipes pageTitle="Receitas Favoritas" pageType="favourites"></app-listRecipes>
+        </div>
+
+        <div class="tab-content">
+          <div id="tabApproveRecipes" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 4}">
+            <app-approveRecipes></app-approveRecipes>
+          </div>
+
+          <div class="tab-content">
+            <div id="tabUserManagement" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 5}">
+              <app-userManagement></app-userManagement>
+            </div>
+
+            <div class="tab-content">
+              <div id="tabCreateCategory" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 6}">
+                <!-- <app-listRecipes pageTitle="Criar Novas Categorias" pageType="favourites"></app-listRecipes> -->
+              </div>
+
+              <div class="tab-content">
+                <div id="tabCreateIngredient" class="tab-pane fade in" [ngClass]="{'active': selectedTab == 7}">
+                  <!-- <app-listRecipes pageTitle="Criar Novos Ingredientes" pageType="favourites"></app-listRecipes> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
