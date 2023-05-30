@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 
 @Component({
   selector: 'app-category',
@@ -19,10 +21,17 @@ export class CategoryComponent implements OnInit {
   });
 
   constructor(
-    private categoryService: CategoryService
-  ) { }
+    private categoryService: CategoryService,
+    private userContext: UserContextService,
+    private router: Router) { }
 
   ngOnInit() {
+    const session = this.userContext.getCurrentSession();
+
+    if (session == null || session.isAdministrator == false) {
+      this.router.navigate(['home']);
+    }
+
     this.loadAllCategories();
   }
 

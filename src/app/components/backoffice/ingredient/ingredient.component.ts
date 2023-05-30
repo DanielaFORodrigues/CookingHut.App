@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Ingredient } from 'src/app/models/ingredient';
 import { IngredientService } from 'src/app/services/ingredient.service';
+import { UserContextService } from 'src/app/utils/contexts/usercontext.service';
 
 @Component({
   selector: 'app-ingredient',
@@ -19,10 +21,17 @@ export class IngredientComponent implements OnInit {
   });
 
   constructor(
-    private ingredientService: IngredientService
-  ) { }
+    private ingredientService: IngredientService,
+    private userContext: UserContextService,
+    private router: Router) { }
 
   ngOnInit() {
+    const session = this.userContext.getCurrentSession();
+
+    if (session == null || session.isAdministrator == false) {
+      this.router.navigate(['home']);
+    }
+
     this.loadAllIngredients();
   }
 
