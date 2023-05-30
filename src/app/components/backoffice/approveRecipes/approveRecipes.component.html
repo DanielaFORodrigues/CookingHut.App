@@ -9,11 +9,10 @@
 
         <br>
 
-         <div class="col-sm-4">
-         <!-- *ngFor="let recipe of this.recipes">
+         <div class="col-sm-4" *ngFor="let recipe of this.recipes">
           <h4>{{ this.recipe?.name }} <br>
             <span style="color: #d31919;">{{ this.recipe?.isApproved == false ? "(Em Aprovação)": "" }}</span></h4>
-          <a [routerLink]="['/viewRecipe']" [queryParams]="{id: recipe?.id}"><img src="https://localhost:44313/recipeImages/{{ this.recipe?.image }}" class="img-responsive" style="width:350px;height: 233px;" alt="Image" /></a> -->
+          <a [routerLink]="['/viewRecipe']" [queryParams]="{id: recipe?.id}"><img src="https://localhost:44313/recipeImages/{{ this.recipe?.image }}" class="img-responsive" style="width:350px;height: 233px;" alt="Image" /></a>
 
           <table class="table">
             <thead>
@@ -53,17 +52,18 @@
 
             <tbody>
               <tr>
-                <!-- <td>{{ this.getCategoryName(this.recipe!.categoryId) }}</td>
+                <td>{{ this.getCategoryName(this.recipe!.categoryId) }}</td>
                 <td>{{ this.enumTextsUtil.getDifficultyLevelText( this.recipe?.difficulty) }}</td>
                 <td>{{ this.recipe?.executionTime }}</td>
                 <td>{{ this.recipe?.user?.name }} em <br>
-                   {{ this.recipe?.creationDate | date:'d MMMM yyyy':'':'pt' }}</td> -->
+                   {{ this.recipe?.creationDate | date:'d MMMM yyyy':'':'pt' }}</td>
+             </tr>
+             <tr>
+              <td colspan="2"><button (click)="approveRecipe(this.recipe!.id)" id="btnAproveRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">Aprovar</button></td>
+              <td colspan="2"><button (click)="deleteRecipe(this.recipe!.id)" id="btnDeclineRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">Eliminar</button></td>
              </tr>
             </tbody>
           </table>
-
-          <button id="btnAproveRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">Aprovar</button>
-          <button id="btnDeclineRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">Eliminar</button>
         </div>
       </div>
     </div>

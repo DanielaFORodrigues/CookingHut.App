@@ -20,6 +20,14 @@ export class RecipeService {
     return this.httpClient.get<Recipe>('https://localhost:44313/CookingHut/Recipe/' + id);
   }
 
+  delete(id: number): Observable<Recipe> {
+    return this.httpClient.delete<Recipe>('https://localhost:44313/CookingHut/Recipe/' + id);
+  }
+
+  approve(id: number): Observable<Recipe> {
+    return this.httpClient.put<Recipe>('https://localhost:44313/CookingHut/Recipe/' + id, null);
+  }
+
   getAll(type: string, id: number): Observable<Recipe[]> {
     return this.httpClient.get<Recipe[]>(`https://localhost:44313/CookingHut/Recipe?type=${type}&id=${id}`);
   }
