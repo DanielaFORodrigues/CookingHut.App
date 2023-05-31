@@ -14,7 +14,9 @@
               <th>Nome</th>
               <th>Email</th>
               <th>Pais</th>
+              <th>Permissões</th>
               <th>Estado</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -23,8 +25,10 @@
               <td>{{ user?.name }} {{ user?.surname }}</td>
               <td>{{ user?.email }}</td>
               <td>{{ user?.country }}</td>
+              <td>{{ user?.isAdministrator ? "Admin" : "Standard" }}</td>
               <td>{{ user?.isBlocked ? "Bloqueado" : "Activo" }}</td>
-              <td><button (click)="blockOrUnblock(user!.id)" id="btnAproveRecipe" class="btn btn-outline-secondary" style="width: 100px; height: 30px">{{ user?.isBlocked ? "Desbloquear" : "Bloquear" }}</button>
+              <td><button (click)="blockOrUnblock(user!.id)" id="btnBlockUser" class="btn btn-outline-secondary" style="width: 100px; height: 30px">{{ user?.isBlocked ? "Desbloquear" : "Bloquear" }}</button>
+              <td><button (click)="promoteOrUnpromoteAdmin(user!.id)" id="btnPromoteAdmin" class="btn btn-outline-secondary" style="width: 100px; height: 30px">{{ user?.isAdministrator ? "Despromover" : "Promover" }}</button>
               </td>
             </tr>
           </tbody>

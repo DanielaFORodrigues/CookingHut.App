@@ -61,4 +61,26 @@ export class UserManagementComponent implements OnInit {
     }
   }
 
+  promoteOrUnpromoteAdmin(userId: number) {
+    const isAdministrator = this.users?.find(u => u.id == userId)?.isAdministrator;
+
+    if (isAdministrator !== null) {
+
+      this.userService.promoteAdmin(userId, !isAdministrator).subscribe(response => {
+
+        if (isAdministrator) {
+          alert("User Despromovido Com Sucesso!");
+        }
+        else {
+          alert("User Promovido Com Sucesso!");
+        }
+
+        window.location.reload();
+      },
+      (error: HttpErrorResponse) => {
+        alert("Não Foi Possível Efectuar a Operação!");
+      });
+    }
+  }
+
 }

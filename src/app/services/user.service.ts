@@ -37,6 +37,10 @@ export class UserService {
     return this.httpClient.put<User>(`https://localhost:44313/CookingHut/User/${userId}/${shouldBlock}`, null);
   }
 
+  promoteAdmin(userId: number, shouldBeAdmin: boolean): Observable<User> {
+    return this.httpClient.patch<User>(`https://localhost:44313/CookingHut/User/${userId}/${shouldBeAdmin}`, null);
+  }
+
   delete(id: number) {
     return this.httpClient.delete('https://localhost:44313/CookingHut/User/' + id);
   }
