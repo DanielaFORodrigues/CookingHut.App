@@ -56,8 +56,9 @@ ul {
 }
 
 
-
-
+h3 {
+  color:  rgb(75, 143, 105);
+ }
 
 
 .card0 {
@@ -173,9 +174,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-h3 {
- color:  rgb(75, 143, 105);
-}
 
 
 .card3 {
