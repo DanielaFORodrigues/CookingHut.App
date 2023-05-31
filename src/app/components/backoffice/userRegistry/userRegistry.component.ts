@@ -40,19 +40,26 @@ export class UserRegistryComponent implements OnInit {
 
   register() {
     this.userRegistry=this.form.value;
-    this.userService.register(this.userRegistry).subscribe( response => {
-      Constants.userSession = response;
-      if(response != undefined) {
-        alert("Utilizador Registado Com Sucesso!");
-        this.router.navigate(['login']);
-      }
-      else {
-        this.showFailedRegisterMessage();
-      }
-    },
-    (error: HttpErrorResponse) => {
-        this.showFailedRegisterMessage();
-    });
+
+    if (this.userRegistry.password === this.userRegistry.confirmPassword) {
+      this.userService.register(this.userRegistry).subscribe( response => {
+        Constants.userSession = response;
+
+        if(response != undefined) {
+          alert("Utilizador Registado Com Sucesso!");
+          this.router.navigate(['login']);
+        }
+        else {
+          this.showFailedRegisterMessage();
+        }
+      },
+      (error: HttpErrorResponse) => {
+          this.showFailedRegisterMessage();
+      });
+    }
+    else {
+      alert("A Password e Confirmação de Password Não Coincidem!");
+    }
   }
 
   showFailedRegisterMessage() {
