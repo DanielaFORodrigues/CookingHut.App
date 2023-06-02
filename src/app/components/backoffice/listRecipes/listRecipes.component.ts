@@ -67,12 +67,18 @@ export class ListRecipesComponent implements OnInit {
   }
 
   loadCategoryPage(categoryId: number) {
-    this.getCategory(categoryId);
 
-    this.recipeService.getAll("category", categoryId).subscribe(response => {
-      this.recipes = response;
+    this.categoryService.getById(categoryId).subscribe(response => {
+      this.category = response;
 
-      this.pageTitle = `Receitas de ${this.category!.name}`
+      this.recipeService.getAll("category", categoryId).subscribe(response => {
+        this.recipes = response;
+
+        this.pageTitle = `Receitas de ${this.category!.name}`
+      },
+      (error: HttpErrorResponse) => {
+        this.router.navigate(['home']);
+      });
     },
     (error: HttpErrorResponse) => {
       this.router.navigate(['home']);
@@ -123,15 +129,6 @@ export class ListRecipesComponent implements OnInit {
 
   getTitle() {
     return this.pageTitle;
-  }
-
-  getCategory(categoryId: number) {
-    this.categoryService.getById(categoryId).subscribe(response => {
-      this.category = response;
-    },
-    (error: HttpErrorResponse) => {
-      this.router.navigate(['home']);
-    });
   }
 
   loadAllCategories() {
